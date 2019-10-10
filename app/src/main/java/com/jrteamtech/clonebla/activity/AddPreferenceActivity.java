@@ -24,7 +24,7 @@ public class AddPreferenceActivity extends AppCompatActivity implements View.OnC
     private Toolbar toolbar;
     private MaterialSpinner chattines,smoking,music,pets;
     private String[] chattinesitem = {"I'm the quiet type","I talk depending on my mood","I love to chat!"};
-    private String[] smokingitem = {"No smoking please","Somking is OK sometimes"};
+    private String[] smokingitem = {"No smoking please","Somking is OK sometimes","Smoking doesn't bother me"};
     private String[] musicitem = {"Silence is golden","I listen to music if i fancy it","It's all about the playlist"};
     private String[] petsitem = {"No pets please","Depends on the animal","Pets welcome.Woof!"};
     private ArrayAdapter adapterchattiness,adaptersmoking,adaptermusic,adapterpets;
