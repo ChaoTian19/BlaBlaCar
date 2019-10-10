@@ -9,7 +9,7 @@ import com.jrteamtech.clonebla.R;
 
 public class DropoffActivity extends AppCompatActivity {
 
-    private Button ddd;
+   
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
