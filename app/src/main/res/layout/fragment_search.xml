@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:padding="@dimen/dimen_18dp"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView
+        android:textSize="@dimen/text_size_28sp"
+        android:textStyle="bold"
+        android:textColor="@color/primaryTextColor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/label_find_a_ride" />
+    <TextView
+        android:textSize="@dimen/text_size_16sp"
+        android:textColor="@android:color/black"
+        android:id="@+id/tv_leaving_from"
+        android:background="@drawable/background_lavender"
+        android:padding="@dimen/dimen_16dp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_24dp"
+        android:hint="@string/leaving_from"
+        />
+    <TextView
+        android:textSize="@dimen/text_size_16sp"
+        android:textColor="@android:color/black"
+        android:id="@+id/tv_going_to"
+        android:background="@drawable/background_lavender"
+        android:padding="@dimen/dimen_16dp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_16dp"
+        android:hint="@string/going_to" />
+    <View
+        android:background="@color/LinkWater"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/view_heght_1dp"
+        android:layout_marginTop="@dimen/dimen_16dp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_14dp"
+        android:text="@string/date_and_time" />
+    <TextView
+        android:id="@+id/calendardate"
+        android:textSize="@dimen/text_size_16sp"
+        android:textColor="@color/colorPrimary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_4dp"
+        android:text="@string/today" />
+    <View
+        android:background="@color/LinkWater"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/view_heght_1dp"
+        android:layout_marginTop="@dimen/dimen_16dp" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_addresslist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <Button
+        android:textSize="@dimen/text_size_14sp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:layout_gravity="center"
+        android:id="@+id/tv_search"
+        android:background="@drawable/background_primary"
+        android:padding="@dimen/dimen_16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_16dp"
+        android:text="@string/action_search"
+        android:textAllCaps="true" />
+</LinearLayout>
