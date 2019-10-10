@@ -18,8 +18,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.jrteamtech.clonebla.utility.Global;
 import com.jrteamtech.clonebla.R;
 
-import static com.jrteamtech.clonebla.utility.Global.result_time;
-
 public class EmailActivity extends AppCompatActivity implements View.OnClickListener {
 
     private ImageView multi;
@@ -88,7 +86,7 @@ public class EmailActivity extends AppCompatActivity implements View.OnClickList
     private void Datetime(){
         if (Global.getSelected_time() != null){
             //   Calendardate.setText("ddd");
-            datetime.setText(result_time);
+            datetime.setText(Global.getSelected_time());
         }
     }
 }
