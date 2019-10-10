@@ -1,5 +1,6 @@
 package com.jrteamtech.clonebla.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -18,6 +19,8 @@ import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.widget.PopupMenu.OnMenuItemClickListener;
 import com.google.android.material.tabs.TabLayout;
 import com.jrteamtech.clonebla.R;
+import com.jrteamtech.clonebla.activity.ChooseProfilePhotoActivity;
+import com.jrteamtech.clonebla.activity.EditProfileActivity;
 import com.jrteamtech.clonebla.adapter.ViewPagerAdapter;
 
 public class ProfileFragment extends Fragment implements View.OnClickListener {
@@ -48,6 +51,9 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         setupViewPager(this.viewPager);
         this.tabLayout.setupWithViewPager(this.viewPager);
         this.imageMenu.setOnClickListener(this);
+        this.frameAddProfile.setOnClickListener(this);
+        this.tvUserName.setOnClickListener(this);
+        this.tvUserStatus.setOnClickListener(this);
     }
 
     private void setupViewPager(ViewPager viewPager2) {
@@ -64,9 +70,11 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
             public boolean onMenuItemClick(MenuItem menuItem) {
                 int itemId = menuItem.getItemId();
                 if (itemId == R.id.action_edit_my_details) {
-                    Toast.makeText(ProfileFragment.this.getContext(), ProfileFragment.this.getResources().getString(R.string.action_edit_my_details), Toast.LENGTH_LONG).show();
+                   // Toast.makeText(ProfileFragment.this.getContext(), ProfileFragment.this.getResources().getString(R.string.action_edit_my_details), Toast.LENGTH_LONG).show();
+              startActivity(new Intent(getContext(), EditProfileActivity.class));
                 } else if (itemId == R.id.action_edit_my_photo) {
-                    Toast.makeText(ProfileFragment.this.getContext(), ProfileFragment.this.getResources().getString(R.string.action_edit_my_photo), Toast.LENGTH_LONG ).show();
+                    // Toast.makeText(ProfileFragment.this.getContext(), ProfileFragment.this.getResources().getString(R.string.action_edit_my_photo), Toast.LENGTH_LONG ).show();
+                startActivity(new Intent(getContext(), ChooseProfilePhotoActivity.class));
                 }
                 return false;
             }
@@ -75,9 +83,24 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
     }
 
     public void onClick(View view) {
-        if (view.getId() == R.id.image_menu) {
-            getPopUpMenu();
-        }
+//        if (view.getId() == R.id.image_menu) {
+//            getPopUpMenu();
+
+            switch (view.getId()){
+                case R.id.image_menu :
+                    getPopUpMenu();
+                    break;
+                case R.id.frame_add_profile:
+                    startActivity(new Intent(getContext(),ChooseProfilePhotoActivity.class));
+                    break;
+                case R.id.tv_user_status:
+                case R.id.tv_user_name:
+                    startActivity(new Intent(getContext(),EditProfileActivity.class));
+                    break;
+
+
+            }
+
     }
 }
 
