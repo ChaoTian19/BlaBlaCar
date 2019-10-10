@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".activity.StopoversActivity">
+    tools:context=".activity.StopOversActivity">
 
     <ImageView
         android:layout_width="40dp"
