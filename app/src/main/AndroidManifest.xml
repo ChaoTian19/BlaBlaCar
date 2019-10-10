@@ -27,6 +27,7 @@
         <activity android:name=".activity.EmailActivity" android:screenOrientation="portrait"/>
         <activity android:name=".activity.ChooseProfilePhotoActivity" android:screenOrientation="portrait"/>
         <activity android:name=".activity.AddPreferenceActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".activity.VerifyMyIdActivity" android:screenOrientation="portrait"/>
 
         <activity android:name=".fragment.SearchFragment" android:screenOrientation="portrait"/>
         <activity
