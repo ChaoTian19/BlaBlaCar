@@ -11,26 +11,26 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
-        <activity android:name=".MainActivity" android:theme="@style/FullScreenStyle"  android:screenOrientation="portrait"/>
-        <activity android:name=".SignUpActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".SearchActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".NoRideFindActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".StopoversActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".PicUpTimePassengersActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".PickUpActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".DropoffActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".ChooseDateActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".EditProfileActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".AddCarActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".HomeActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".SeleteTimeActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".EmailActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".Chooseprofilephoto" android:screenOrientation="portrait"/>
-        <activity android:name=".AddpeferenceActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".activity.MainActivity" android:theme="@style/FullScreenStyle"  android:screenOrientation="portrait"/>
+        <activity android:name=".activity.SignUpActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".activity.SearchActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".activity.NoRideFindActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".activity.StopoversActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".activity.PicUpTimePassengersActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".activity.PickUpActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".activity.DropoffActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".activity.ChooseDateActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".activity.EditProfileActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".activity.AddCarActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".activity.HomeActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".activity.SeleteTimeActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".activity.EmailActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".activity.ChooseProfilePhotoActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".activity.AddpeferenceActivity" android:screenOrientation="portrait"/>
 
-        <activity android:name=".SearchFragment" android:screenOrientation="portrait"/>
+        <activity android:name=".fragment.SearchFragment" android:screenOrientation="portrait"/>
         <activity
-            android:name=".SplashActivity"
+            android:name=".activity.SplashActivity"
             android:screenOrientation="portrait"
             android:theme="@style/FullScreenStyle">
             <intent-filter>
