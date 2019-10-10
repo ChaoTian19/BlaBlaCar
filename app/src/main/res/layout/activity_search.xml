@@ -22,7 +22,6 @@
             android:layout_marginTop="10dp"
             android:hint="Station Road or The Bridge Cafe..."
             android:paddingStart="@dimen/dimen_42dp"
-
             android:paddingLeft="@dimen/dimen_42dp" />
 
         <ImageView
@@ -45,75 +44,45 @@
 
 
     <RelativeLayout
+        android:id="@+id/rl_current_location"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/bg"
         android:clickable="true"
-        android:focusable="true">
+        android:focusable="true"
+        android:visibility="visible">
 
-    <TextView
-        android:textSize="20sp"
-        android:textColor="@color/primaryTextColor"
-        android:id="@+id/where_tv_going_to"
-        android:padding="@dimen/dimen_16dp"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:layout_marginLeft="50dp"
-        android:text="Use current location" />
+        <TextView
+            android:textSize="20sp"
+            android:textColor="@color/primaryTextColor"
+            android:id="@+id/where_tv_going_to"
+            android:padding="@dimen/dimen_16dp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Use current location"
+            android:layout_marginStart="50dp"
+            android:layout_marginLeft="50dp" />
 
-     <ImageView
-         android:scaleType="fitXY"
-         android:layout_marginTop="25dp"
-         android:layout_alignParentEnd="true"
-         android:layout_width="10dp"
-         android:layout_height="20dp"
-         android:layout_marginRight="5dp"
-         android:src="@drawable/com_appboy_inappmessage_chevron"
-         android:layout_alignParentRight="true">
+         <ImageView
+             android:scaleType="fitXY"
+             android:layout_marginTop="25dp"
+             android:layout_alignParentEnd="true"
+             android:layout_width="10dp"
+             android:layout_height="20dp"
+             android:layout_marginRight="5dp"
+             android:src="@drawable/com_appboy_inappmessage_chevron"
+             android:layout_alignParentRight="true">
 
-     </ImageView>
+         </ImageView>
 
     </RelativeLayout>
 
+    <jrizani.jrmapview.JRMapView
+        android:id="@+id/mapView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"/>
+
 
 </LinearLayout>
-<!--    <View-->
-<!--        android:background="@color/LinkWater"-->
-<!--        android:layout_width="fill_parent"-->
-<!--        android:layout_height="@dimen/view_heght_1dp"-->
-<!--        android:layout_marginTop="@dimen/dimen_16dp" />-->
-<!--    <TextView-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="@dimen/dimen_14dp"-->
-<!--        android:text="@string/date_and_time" />-->
-<!--    <TextView-->
-<!--        android:textSize="@dimen/text_size_16sp"-->
-<!--        android:textColor="@color/colorPrimary"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="@dimen/dimen_4dp"-->
-<!--        android:text="@string/today" />-->
-<!--    <View-->
-<!--        android:background="@color/LinkWater"-->
-<!--        android:layout_width="fill_parent"-->
-<!--        android:layout_height="@dimen/view_heght_1dp"-->
-<!--        android:layout_marginTop="@dimen/dimen_16dp" />-->
-<!--    <androidx.recyclerview.widget.RecyclerView-->
-<!--        android:id="@+id/recycler_addresslist"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content" />-->
-<!--    <TextView-->
-<!--        android:textSize="@dimen/text_size_14sp"-->
-<!--        android:textStyle="bold"-->
-<!--        android:textColor="@color/white"-->
-<!--        android:layout_gravity="center"-->
-<!--        android:id="@+id/where_tv_search"-->
-<!--        android:background="@drawable/background_primary"-->
-<!--        android:padding="@dimen/dimen_16dp"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="@dimen/dimen_16dp"-->
-<!--        android:text="@string/action_search"-->
-<!--        android:textAllCaps="true" />-->

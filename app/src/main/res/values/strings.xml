@@ -7,7 +7,7 @@
     <string name="email_required"> Please enter a valid email address. </string>
     <string name="password_required">  Choose a password of min. 8 characters. </string>
     <string name="confrimpassword_required">   Password must match </string>
-    <string name="_0_0_500">0/0-500</string>
+    <string name="_0_0_500">0\/0\-500</string>
     <string name="_12_00">12:00</string>
     <string name="abc_action_bar_home_description">Navigate home</string>
     <string name="abc_action_bar_up_description">Navigate up</string>
