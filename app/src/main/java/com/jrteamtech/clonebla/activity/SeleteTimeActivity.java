@@ -67,7 +67,16 @@ public class SeleteTimeActivity extends AppCompatActivity implements View.OnClic
             new TimePickerDialog(this, this, calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), true){
                 @Override
                 public void onTimeChanged(TimePicker view, int hourOfDay, int minute) {
-                    changetime = "" + hourOfDay + ":" + minute;
+                    if(hourOfDay<10 && minute <10){
+                        changetime = "" +"0" +hourOfDay +":"+"0" + minute;
+                    }else if (hourOfDay<10 && minute >10) {
+                        changetime = "" +"0" +hourOfDay +":" + minute;
+                    }else if(hourOfDay>10 && minute<10){
+                        changetime = "" +hourOfDay +":"+"0"+ minute;
+                    }else {
+                        changetime = "" + hourOfDay + ":" + minute;
+                    }
+
                 }
             }.show();
         }

@@ -17,6 +17,7 @@ import com.jrteamtech.clonebla.R;
 import com.jrteamtech.clonebla.activity.ChooseDateActivity;
 import com.jrteamtech.clonebla.activity.NoRideFindActivity;
 import com.jrteamtech.clonebla.activity.SearchActivity;
+
 import com.jrteamtech.clonebla.utility.Global;
 
 

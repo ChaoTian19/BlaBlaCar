@@ -57,6 +57,7 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
 
     private void openLoginFragment() {
         getSupportActionBar().setTitle((CharSequence) getString(R.string.label_login));
+        toolbar.setTitleTextColor(getResources().getColor(android.R.color.white));
         getSupportActionBar().show();
         LoginFragment loginFragment = new LoginFragment();
         FragmentManager supportFragmentManager = getSupportFragmentManager();
@@ -79,6 +80,7 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
 
     private void openRideFragment() {
         getSupportActionBar().setTitle((CharSequence) getString(R.string.label_your_rides));
+        toolbar.setTitleTextColor(getResources().getColor(android.R.color.white));
         RidesFragment ridesFragment = new RidesFragment();
         FragmentManager supportFragmentManager = getSupportFragmentManager();
         FragmentTransaction beginTransaction = supportFragmentManager.beginTransaction();
@@ -108,6 +110,7 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
 
     private void openInboxFragment() {
         getSupportActionBar().setTitle((CharSequence) getString(R.string.action_inbox));
+        toolbar.setTitleTextColor(getResources().getColor(android.R.color.white));
         getSupportActionBar().show();
         InboxFragment inboxFragment = new InboxFragment();
         FragmentManager supportFragmentManager = getSupportFragmentManager();
@@ -119,6 +122,7 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
 
     private void openProfileFragment() {
         getSupportActionBar().setTitle((CharSequence) getString(R.string.action_profile));
+        toolbar.setTitleTextColor(getResources().getColor(android.R.color.white));
         getSupportActionBar().show();
         ProfileFragment profileFragment = new ProfileFragment();
         FragmentManager supportFragmentManager = getSupportFragmentManager();

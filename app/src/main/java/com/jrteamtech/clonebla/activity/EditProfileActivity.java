@@ -2,10 +2,13 @@ package com.jrteamtech.clonebla.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import androidx.appcompat.widget.Toolbar;
+
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -16,6 +19,9 @@ public class EditProfileActivity extends AppCompatActivity {
     private TextView chooseprofile ;
     private ImageView choosephoto;
     private Button  saveprofile, saveemail,savemobile;
+
+    private Toolbar toolbar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +42,24 @@ public class EditProfileActivity extends AppCompatActivity {
             }
         });
 
+        setToolbar();
+    }
+    private void setToolbar(){
+        this.toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(this.toolbar);
+        getSupportActionBar().setTitle("Edit profile");
+        toolbar.setTitleTextColor(getResources().getColor(android.R.color.white));
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().show();
+    }
 
+    public boolean onOptionsItemSelected(MenuItem item){
+        switch (item.getItemId()){
+            case android.R.id.home:
+                finish();
+                return true;
+            default:
+                return  super.onOptionsItemSelected(item);
+        }
     }
 }
