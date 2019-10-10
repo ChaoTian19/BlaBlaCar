@@ -15,10 +15,10 @@
         <activity android:name=".activity.SignUpActivity" android:screenOrientation="portrait"/>
         <activity android:name=".activity.SearchActivity" android:screenOrientation="portrait"/>
         <activity android:name=".activity.NoRideFindActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".activity.StopoversActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".activity.StopOversActivity" android:screenOrientation="portrait"/>
         <activity android:name=".activity.PicUpTimePassengersActivity" android:screenOrientation="portrait"/>
         <activity android:name=".activity.PickUpActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".activity.DropoffActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".activity.DropOffActivity" android:screenOrientation="portrait"/>
         <activity android:name=".activity.ChooseDateActivity" android:screenOrientation="portrait"/>
         <activity android:name=".activity.EditProfileActivity" android:screenOrientation="portrait"/>
         <activity android:name=".activity.AddCarActivity" android:screenOrientation="portrait"/>
@@ -26,7 +26,7 @@
         <activity android:name=".activity.SeleteTimeActivity" android:screenOrientation="portrait"/>
         <activity android:name=".activity.EmailActivity" android:screenOrientation="portrait"/>
         <activity android:name=".activity.ChooseProfilePhotoActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".activity.AddpeferenceActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".activity.AddPreferenceActivity" android:screenOrientation="portrait"/>
 
         <activity android:name=".fragment.SearchFragment" android:screenOrientation="portrait"/>
         <activity

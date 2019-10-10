@@ -18,7 +18,7 @@ import androidx.fragment.app.Fragment;
 
 import com.jrteamtech.clonebla.R;
 import com.jrteamtech.clonebla.activity.AddCarActivity;
-import com.jrteamtech.clonebla.activity.AddpeferenceActivity;
+import com.jrteamtech.clonebla.activity.AddPreferenceActivity;
 import com.jrteamtech.clonebla.activity.EditProfileActivity;
 
 public class DetailFragment extends Fragment implements View.OnClickListener {
@@ -87,7 +87,7 @@ public class DetailFragment extends Fragment implements View.OnClickListener {
     }
 
     private void addpreference(){
-        startActivity(new Intent(getContext(), AddpeferenceActivity.class));
+        startActivity(new Intent(getContext(), AddPreferenceActivity.class));
     }
 
     private void addACar() {
