@@ -13,13 +13,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.jrteamtech.clonebla.utility.Global;
 import com.jrteamtech.clonebla.R;
 import com.jrteamtech.clonebla.activity.ChooseDateActivity;
 import com.jrteamtech.clonebla.activity.NoRideFindActivity;
 import com.jrteamtech.clonebla.activity.SearchActivity;
-
-import static com.jrteamtech.clonebla.utility.Global.result_time;
+import com.jrteamtech.clonebla.utility.Global;
 
 
 /**
@@ -74,7 +72,7 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
         super.onResume();
         if (Global.getSelected_time() != null){
          //   Calendardate.setText("ddd");
-            Calendardate.setText(result_time);
+            Calendardate.setText(Global.getSelected_time());
         }
     }
 }

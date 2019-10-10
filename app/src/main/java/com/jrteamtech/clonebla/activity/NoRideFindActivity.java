@@ -12,8 +12,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.jrteamtech.clonebla.utility.Global;
 import com.jrteamtech.clonebla.R;
 
-import static com.jrteamtech.clonebla.utility.Global.result_time;
-
 public class NoRideFindActivity extends AppCompatActivity implements View.OnClickListener{
 
 
@@ -54,7 +52,7 @@ public class NoRideFindActivity extends AppCompatActivity implements View.OnClic
 
     private void Datetimesetting(){
         if(Global.getSelected_time() != null){
-            calendardate.setText(result_time);
+            calendardate.setText(Global.getSelected_time());
         }
     }
 }

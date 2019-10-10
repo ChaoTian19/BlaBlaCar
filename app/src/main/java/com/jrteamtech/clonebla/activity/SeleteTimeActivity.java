@@ -58,7 +58,7 @@ public class SeleteTimeActivity extends AppCompatActivity implements View.OnClic
         }else if(id == R.id.rightnav){
 
             //  changetime = timeFormat.format(calendar.getTime());
-            Global.setSelected_time(changetime);
+            Global.setSelected_time(Global.getSelected_time() + " " + changetime);
             finish();
 
 //            calendardate.setText(timeFormat.format(calendar.getTime()));
