@@ -31,6 +31,7 @@
         <activity android:name=".activity.VerifyPhoneNumberActivity" android:screenOrientation="portrait"/>
 
         <activity android:name=".fragment.SearchFragment" android:screenOrientation="portrait"/>
+        <activity android:name=".fragment.VerifyMobileFragment" android:screenOrientation="portrait"/>
         <activity
             android:name=".activity.SplashActivity"
             android:screenOrientation="portrait"

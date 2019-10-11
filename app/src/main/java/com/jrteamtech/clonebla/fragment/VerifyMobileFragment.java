@@ -15,12 +15,6 @@ import com.jrteamtech.clonebla.R;
  */
 public class VerifyMobileFragment extends Fragment {
 
-
-    public VerifyMobileFragment() {
-        // Required empty public constructor
-    }
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
