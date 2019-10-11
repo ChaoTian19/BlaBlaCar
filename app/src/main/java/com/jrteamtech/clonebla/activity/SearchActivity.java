@@ -23,6 +23,8 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.jrteamtech.clonebla.R;
 
+import java.util.Locale;
+
 import jrizani.jrmapview.JRMapView;
 
 public class SearchActivity extends AppCompatActivity implements View.OnClickListener, OnMapReadyCallback {
@@ -110,5 +112,12 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
                 }
             }
         });
+
+        String[] locales = Locale.getISOCountries();
+        for(String countryCode : locales){
+            Locale obj = new Locale("", countryCode);
+
+            System.out.println("Country Name = " + obj.getDisplayCountry());
+        }
     }
 }

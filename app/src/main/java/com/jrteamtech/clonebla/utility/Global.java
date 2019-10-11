@@ -15,6 +15,3 @@ public class Global {
         Global.selected_time = selected_time;
     }
 }
-
-
-//solution
