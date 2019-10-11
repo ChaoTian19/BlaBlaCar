@@ -20,6 +20,8 @@ import com.jrteamtech.clonebla.R;
 import com.jrteamtech.clonebla.activity.AddCarActivity;
 import com.jrteamtech.clonebla.activity.AddPreferenceActivity;
 import com.jrteamtech.clonebla.activity.EditProfileActivity;
+import com.jrteamtech.clonebla.activity.VerifyMyIdActivity;
+import com.jrteamtech.clonebla.activity.VerifyPhoneNumberActivity;
 
 public class DetailFragment extends Fragment implements View.OnClickListener {
     private CardView cardAboutYou;
@@ -94,6 +96,14 @@ public class DetailFragment extends Fragment implements View.OnClickListener {
         startActivity(new Intent(getContext(), AddCarActivity.class));
     }
 
+    private void addverifymyid(){
+        startActivity(new Intent(getContext(), VerifyMyIdActivity.class));
+    }
+
+    private void addverifyphone(){
+        startActivity(new Intent(getContext(), VerifyPhoneNumberActivity.class));
+    }
+
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.image_verification /*2131230905*/:
@@ -108,6 +118,12 @@ public class DetailFragment extends Fragment implements View.OnClickListener {
             case R.id.tv_add_preference         :
                  addpreference();
                  return;
+            case  R.id.tv_verify_id:
+                  addverifymyid();
+                  return;
+            case  R.id.tv_add_phone:
+                  addverifyphone();
+                  return;
             default:
                 return;
         }

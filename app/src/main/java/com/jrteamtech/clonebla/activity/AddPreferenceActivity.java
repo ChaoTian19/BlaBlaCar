@@ -48,6 +48,7 @@ public class AddPreferenceActivity extends AppCompatActivity implements View.OnC
         chattines.setAdapter(this.adapterchattiness);
 
 
+
         this.adaptersmoking = new ArrayAdapter<>(AddPreferenceActivity.this,android.R.layout.simple_list_item_1,this.smokingitem);
         this.adaptersmoking.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         smoking.setAdapter(this.adaptersmoking);
