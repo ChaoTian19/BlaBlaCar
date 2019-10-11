@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -49,6 +50,7 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
             requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, 123);
         } else {
+
             mMapView.onCreate(savedInstanceState, this);
             mMapView.onResume();
         }
@@ -57,9 +59,9 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
         stationload.requestFocus();
 
         uselocation   = (TextView) findViewById(R.id.where_tv_going_to);
-        leftnavbutton = (ImageView)findViewById(R.id.leftnavbutton);
+        leftnavbutton = (ImageView)findViewById(R.id.search_back_btn);
       //  Wheresearch  = (TextView)findViewById(R.id.where_tv_search);
-         zoombutton = (ImageView)findViewById(R.id.zoombutton);
+         zoombutton = (ImageView)findViewById(R.id.search_icon);
 
         stationload.setOnClickListener(this);
         uselocation.setOnClickListener(this);
@@ -72,7 +74,7 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
     @Override
     public void onClick(View view) {
       int id = view.getId();
-      if(id == R.id.leftnavbutton){
+      if(id == R.id.search_back_btn){
            leftnavbutton.setVisibility(View.INVISIBLE);
            zoombutton.setVisibility(View.VISIBLE);
 //          Intent intent = new Intent(SearchActivity.this,SearchFragment.class);

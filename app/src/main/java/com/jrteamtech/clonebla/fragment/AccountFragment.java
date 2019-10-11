@@ -1,5 +1,6 @@
 package com.jrteamtech.clonebla.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,10 +11,17 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
 
 import com.jrteamtech.clonebla.R;
+import com.jrteamtech.clonebla.activity.HelpActivity;
+import com.jrteamtech.clonebla.activity.LincesActivity;
+import com.jrteamtech.clonebla.activity.PrivatePolicyActivity;
+import com.jrteamtech.clonebla.activity.TermsConditionsActivity;
 
-public class AccountFragment extends Fragment {
+public class AccountFragment extends Fragment implements View.OnClickListener {
     private CardView cardAbout;
     private CardView cardLogout;
     private CardView cardMoney;
@@ -62,6 +70,58 @@ public class AccountFragment extends Fragment {
         this.tvPrivacyPolicy = (TextView) view.findViewById(R.id.tv_privacy_policy);
         this.tvLicenses = (TextView) view.findViewById(R.id.tv_licenses);
         this.tvLogout = (TextView) view.findViewById(R.id.tv_logout);
+
+
+        this.tvLogout.setOnClickListener(this);
+        this.tvLicenses.setOnClickListener(this);
+        this.tvPrivacyPolicy.setOnClickListener(this);
+        this.tvTermsAndCondition.setOnClickListener(this);
+        this.tvHelp.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.tv_logout  :
+                logOut();
+                return;
+            case R.id.tv_licenses :
+                lincenses();
+                return;
+            case R.id.tv_privacy_policy :
+                privatepolicy();
+                return;
+            case R.id.tv_terms_conditions :
+                termsconditions();
+                return;
+            case R.id.tv_help  :
+                help();
+                return;
+
+                default:
+                    return;
+        }
+    }
+
+    private void logOut(){
+        CurrentFragment CurrentFragment = new CurrentFragment();
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        FragmentTransaction beginTransaction = fragmentManager.beginTransaction();
+        beginTransaction.replace(R.id.frame_container, CurrentFragment);
+        beginTransaction.disallowAddToBackStack();
+        beginTransaction.commit();
+    }
+    private void lincenses(){
+        startActivity(new Intent(getContext(), LincesActivity.class));
+    }
+    private void privatepolicy(){
+        startActivity(new Intent(getContext(), PrivatePolicyActivity.class));
+    }
+    private void termsconditions(){
+        startActivity(new Intent(getContext(), TermsConditionsActivity.class));
+    }
+    private void help(){
+        startActivity(new Intent(getContext(),  HelpActivity.class));
     }
 }
 

@@ -77,6 +77,20 @@
         <activity
             android:name=".fragment.SearchFragment"
             android:screenOrientation="portrait" />
+        <activity android:name=".activity.VerifyMyIdActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".activity.VerifyPhoneNumberActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".activity.SeePublicProfileActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".activity.LincesActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.PrivatePolicyActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.TermsConditionsActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.HelpActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".activity.SplashActivity"
             android:screenOrientation="portrait"
@@ -93,7 +107,7 @@
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyC7ceGwdfXa7uquE7A6Dcpz6gx7lKNavvs" />
+            android:value="AIzaSyALThamZB2MCS-PS2zgcR3-BG3XujFLJzo" />
     </application>
 
 </manifest>
