@@ -22,6 +22,9 @@ public class PlacesViewActivity extends AppCompatActivity implements View.OnClic
 
         back_arrow_btn = findViewById(R.id.img_back_arrow);
         confirm_btn = findViewById(R.id.confirm_btn);
+
+        back_arrow_btn.setOnClickListener(this);
+        confirm_btn.setOnClickListener(this);
     }
 
     @Override

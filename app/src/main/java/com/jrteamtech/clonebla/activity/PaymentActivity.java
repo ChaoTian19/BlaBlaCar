@@ -23,6 +23,10 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
         back_arrow_btn = findViewById(R.id.img_back_arrow);
         continue_btn = findViewById(R.id.continue_btn);
         cancel_agree_btn = findViewById(R.id.cancel_agree_btn);
+
+        back_arrow_btn.setOnClickListener(this);
+        continue_btn.setOnClickListener(this);
+        cancel_agree_btn.setOnClickListener(this);
     }
 
     @Override

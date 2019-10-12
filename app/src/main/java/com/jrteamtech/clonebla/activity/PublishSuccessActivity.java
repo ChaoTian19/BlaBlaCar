@@ -19,6 +19,8 @@ public class PublishSuccessActivity extends AppCompatActivity implements View.On
         setContentView(R.layout.activity_publish_success);
 
         ok_btn = findViewById(R.id.ok_btn);
+
+        ok_btn.setOnClickListener(this);
     }
 
     @Override

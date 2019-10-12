@@ -22,6 +22,9 @@ public class GivingPriceActivity extends AppCompatActivity implements View.OnCli
 
         back_arrow_btn = findViewById(R.id.img_back_arrow);
         edit_amount_btn = findViewById(R.id.edit_amount_btn);
+
+        back_arrow_btn.setOnClickListener(this);
+        edit_amount_btn.setOnClickListener(this);
     }
 
     @Override

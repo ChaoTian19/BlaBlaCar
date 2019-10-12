@@ -29,6 +29,10 @@ public class AddStopOverActivity extends AppCompatActivity implements View.OnCli
         et_search = findViewById(R.id.et_search);
         my_location_btn = findViewById(R.id.ll_my_location_btn);
         stop_over_listview = findViewById(R.id.stop_over_listview);
+
+        back_arrow_btn.setOnClickListener(this);
+        my_location_btn.setOnClickListener(this);
+
     }
 
     @Override

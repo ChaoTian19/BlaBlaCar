@@ -32,6 +32,11 @@ public class ChoosePassengerActivity extends AppCompatActivity implements View.O
 
         count_view.setText(String.valueOf(count));
 
+        back_arrow_btn.setOnClickListener(this);
+        minus_counter_btn.setOnClickListener(this);
+        plus_counter_btn.setOnClickListener(this);
+        next_btn.setOnClickListener(this);
+
     }
 
     @Override
