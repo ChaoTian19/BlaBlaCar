@@ -1,18 +1,23 @@
 package com.jrteamtech.clonebla.activity;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.ImageButton;
+import android.widget.ListView;
+import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -22,23 +27,40 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.gson.JsonElement;
 import com.jrteamtech.clonebla.R;
+import com.jrteamtech.clonebla.adapter.SearchHistoryAdapter;
+import com.jrteamtech.clonebla.utility.Global;
 
-import java.util.Locale;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.nio.charset.Charset;
+import java.util.ArrayList;
+import java.util.List;
 
 import jrizani.jrmapview.JRMapView;
 
-public class SearchActivity extends AppCompatActivity implements View.OnClickListener, OnMapReadyCallback {
+public class SearchActivity extends AppCompatActivity implements View.OnClickListener, OnMapReadyCallback, TextWatcher {
 
-    private EditText stationload;
-    private ImageView leftnavbutton,zoombutton;
+    private EditText et_search;
+    private ImageButton search_back_btn, search_btn;
 
+    private ListView search_history_list_view;
+    SearchHistoryAdapter mAdapter;
+    private RelativeLayout rl_current_location_btn;
+    private RelativeLayout map_layout;
 
-    private TextView uselocation;
+    public static GoogleMap mMap;
+    public static JRMapView mMapView;
+    private FloatingActionButton next_pick_btn;
 
-    private GoogleMap mMap;
-    private JRMapView mMapView;
-    private Bundle savedInstanceState;
+    public static Bundle savedInstanceState;
+
+    private String activity_name = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,41 +68,56 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
         this.savedInstanceState = savedInstanceState;
         setContentView(R.layout.activity_search);
 
-        mMapView = findViewById(R.id.mapView);
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
-            requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, 123);
-        } else {
-
-            mMapView.onCreate(savedInstanceState, this);
-            mMapView.onResume();
+        if(getIntent() != null){
+            activity_name = getIntent().getStringExtra(getResources().getString(R.string.activity_name));
         }
 
-        stationload = (EditText) findViewById(R.id.where_tv_leaving_from);
-        stationload.requestFocus();
+        mMapView = findViewById(R.id.mapView);
 
-        uselocation   = (TextView) findViewById(R.id.where_tv_going_to);
-        leftnavbutton = (ImageView)findViewById(R.id.search_back_btn);
-      //  Wheresearch  = (TextView)findViewById(R.id.where_tv_search);
-         zoombutton = (ImageView)findViewById(R.id.search_icon);
+        et_search = findViewById(R.id.et_search);
+        search_history_list_view = findViewById(R.id.search_history_list_view);
 
-        stationload.setOnClickListener(this);
-        uselocation.setOnClickListener(this);
-        leftnavbutton.setOnClickListener(this);
-     //   Wheresearch.setOnClickListener(this);
+        search_back_btn = findViewById(R.id.search_back_btn);
+        search_btn = findViewById(R.id.search_icon);
+        rl_current_location_btn = findViewById(R.id.rl_current_location);
+        map_layout = findViewById(R.id.map_layout);
+        next_pick_btn = findViewById(R.id.next_pick_btn);
+
+        et_search.addTextChangedListener(this);
+        search_back_btn.setOnClickListener(this);
+        rl_current_location_btn.setOnClickListener(this);
+        next_pick_btn.setOnClickListener(this);
+
     }
-
-
 
     @Override
     public void onClick(View view) {
-      int id = view.getId();
-      if(id == R.id.search_back_btn){
-           leftnavbutton.setVisibility(View.INVISIBLE);
-           zoombutton.setVisibility(View.VISIBLE);
-//          Intent intent = new Intent(SearchActivity.this,SearchFragment.class);
-//                  startActivity(intent);
-          finish();
-      }
+        switch (view.getId()){
+            case R.id.search_back_btn:
+                search_back_btn.setVisibility(View.GONE);
+                finish();
+                break;
+            case R.id.rl_current_location:
+                rl_current_location_btn.setVisibility(View.GONE);
+                search_history_list_view.setVisibility(View.GONE);
+                map_layout.setVisibility(View.VISIBLE);
+                if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+                    requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, 123);
+                } else {
+                    mMapView.onCreate(savedInstanceState, this);
+                    mMapView.onResume();
+                }
+                break;
+            case R.id.next_pick_btn:
+                if(activity_name.equals(PickUpActivity.class.getSimpleName())){
+                    startActivity(new Intent(SearchActivity.this, DropOffActivity.class));
+                } else if(activity_name.equals(DropOffActivity.class.getSimpleName())){
+                    startActivity(new Intent(SearchActivity.this, StopOversActivity.class));
+                } else {
+
+                }
+                break;
+        }
     }
 
     @Override
@@ -114,12 +151,85 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
                 }
             }
         });
+    }
 
-        String[] locales = Locale.getISOCountries();
-        for(String countryCode : locales){
-            Locale obj = new Locale("", countryCode);
-
-            System.out.println("Country Name = " + obj.getDisplayCountry());
+    @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+    @Override public void afterTextChanged(Editable s) {}
+    @Override
+    public void onTextChanged(CharSequence s, int start, int before, int count) {
+        if (!s.toString().equals("")) {
+            List<String> results = new ArrayList<>();
+            String url = Global.GOOGLE_MAP_SEARCH_PLACE_URL + "?query=" + s.toString() + "&key=" + getResources().getString(R.string.google_map_api_key);
+            new ReadJsonFromUrl().execute(url);
+//            Call<GetXmlInfo> apiCall = ApiClient.getApiXmlClient().getXml();
+//            apiCall.enqueue(new Callback<GetXmlInfo>() {
+//                @Override
+//                public void onResponse(Call<GetXmlInfo> call, Response<GetXmlInfo> response) {
+//                    assert response.body() != null;
+//                    Float newVersionNumber = Float.parseFloat(response.body().getVersion());
+//                    if(currentVersionNumber < newVersionNumber){
+//                        new AlertDialog.Builder(CategoryActivity.this)
+//                                .setTitle("Update available")
+//                                .setMessage("New version " + newVersionNumber + " is released. Click DOWNLOAD NOW to download please.")
+//                                .setPositiveButton("DOWNLOAD NOW", new DialogInterface.OnClickListener() {
+//                                    @Override
+//                                    public void onClick(DialogInterface dialog, int which) {
+//                                        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.evilkingmedia.com/download/"));
+//                                        startActivity(intent);
+//                                    }
+//                                })
+//                                .setNegativeButton("Cancel", null)
+//                                .show();
+//                    }
+//                }
+//
+//                @Override
+//                public void onFailure(Call<GetXmlInfo> call, Throwable t) {
+//                    Toast.makeText(CategoryActivity.this, "error!", Toast.LENGTH_SHORT).show();
+//                }
+//            });
         }
     }
+
+    private class ReadJsonFromUrl extends AsyncTask<String, Void, JsonElement> {
+        @Override
+        protected JsonElement doInBackground(String... urls) {
+            InputStream is = null;
+            try {
+                is = new URL(urls[0]).openStream();
+                BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
+                StringBuilder sb = new StringBuilder();
+                int cp;
+                while ((cp = rd.read()) != -1){
+                    sb.append((char)cp);
+                }
+                String jsonText = sb.toString();
+                Log.e("AAAAAAAAA", jsonText);
+                return null;
+            } catch (IOException e) {
+                e.printStackTrace();
+                return null;
+            } finally {
+                try {
+                    is.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        @Override
+        protected void onPostExecute(JsonElement jsonElement) {
+            if(jsonElement != null){
+//                try {
+//
+////                    Log.e("AAAAAAAAAA", );
+//                } catch (JSONException e) {
+//                    e.printStackTrace();
+//                }
+            }
+        }
+    }
+
 }
+

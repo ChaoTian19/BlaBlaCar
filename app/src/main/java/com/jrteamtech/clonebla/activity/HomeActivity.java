@@ -1,21 +1,22 @@
 package com.jrteamtech.clonebla.activity;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.MenuItem;
+import android.widget.FrameLayout;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.os.Bundle;
-import android.view.MenuItem;
-import android.widget.FrameLayout;
-
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.jrteamtech.clonebla.R;
 import com.jrteamtech.clonebla.fragment.CurrentFragment;
 import com.jrteamtech.clonebla.fragment.InboxFragment;
 import com.jrteamtech.clonebla.fragment.LoginFragment;
 import com.jrteamtech.clonebla.fragment.ProfileFragment;
-import com.jrteamtech.clonebla.R;
 import com.jrteamtech.clonebla.fragment.RidesFragment;
 import com.jrteamtech.clonebla.fragment.SearchFragment;
 import com.jrteamtech.clonebla.fragment.SignUpFragment;
@@ -154,9 +155,10 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
         if (itemId != R.id.action_inbox) {
             switch (itemId) {
                 case R.id.action_offer /*2131230780*/:
-                    getSupportActionBar().show();
-                    openLoginFragment();
-                    emptyID();
+//                    getSupportActionBar().show();
+//                    openLoginFragment();
+//                    emptyID();
+                    startActivity(new Intent(HomeActivity.this, PickUpActivity.class));
                     break;
                 case R.id.action_profile /*2131230781*/:
                     getSupportActionBar().show();

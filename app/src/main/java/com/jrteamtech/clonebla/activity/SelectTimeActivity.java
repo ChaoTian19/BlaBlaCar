@@ -1,6 +1,7 @@
 package com.jrteamtech.clonebla.activity;
 
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -16,7 +17,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 
-public class SeleteTimeActivity extends AppCompatActivity implements View.OnClickListener, TimePickerDialog.OnTimeSetListener {
+public class SelectTimeActivity extends AppCompatActivity implements View.OnClickListener, TimePickerDialog.OnTimeSetListener {
 
     private static final String TIME_PATTERN = "HH:mm";
     private Calendar calendar;
@@ -30,10 +31,16 @@ public class SeleteTimeActivity extends AppCompatActivity implements View.OnClic
     private TextView lblTime;
  //   private DateFormat dateFormat;
 
+    private String activity_name = "";
+
 
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         setContentView(R.layout.activity_select_time);
+
+        if(getIntent() != null){
+            activity_name = getIntent().getStringExtra(getResources().getString(R.string.activity_name));
+        }
 
         timeimage = (TextView) findViewById(R.id.timecalculate);
         calendardate = (TextView) findViewById(R.id.calendardate);
@@ -59,7 +66,14 @@ public class SeleteTimeActivity extends AppCompatActivity implements View.OnClic
 
             //  changetime = timeFormat.format(calendar.getTime());
             Global.setSelected_time(Global.getSelected_time() + " " + changetime);
-            finish();
+
+            if(activity_name.equals(StopOversActivity.class.getSimpleName())){
+                startActivity(new Intent(SelectTimeActivity.this, ThinkComfortActivity.class));
+            } else if(activity_name.equals(PublishReturnTripActivity.class.getSimpleName())) {
+                startActivity(new Intent(SelectTimeActivity.this, AddPublishRideActivity.class));
+            } else {
+                finish();
+            }
 
 //            calendardate.setText(timeFormat.format(calendar.getTime()));
 

@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    android:orientation="vertical"
+<LinearLayout android:orientation="vertical"
     android:background="@color/white"
     android:paddingTop="@dimen/dimen_18dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <RelativeLayout
+        android:id="@+id/search_location_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dimen_18dp"
         android:layout_marginEnd="@dimen/dimen_18dp"
         android:background="@drawable/background_lavender"
         android:paddingStart="10dp"
-        android:paddingEnd="0dp"
+        android:paddingEnd="10dp"
         android:layout_marginTop="10dp">
 
         <RelativeLayout
@@ -41,7 +43,7 @@
         </RelativeLayout>
 
         <EditText
-            android:id="@+id/where_tv_leaving_from"
+            android:id="@+id/et_search"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="15dp"
@@ -49,7 +51,17 @@
             android:background="@android:color/transparent"
             android:padding="@dimen/dimen_12dp"
             android:hint="Station Road or The Bridge Cafe..."
-            android:layout_toEndOf="@+id/filter_layout"/>
+            android:layout_toEndOf="@+id/filter_layout"
+            android:layout_toStartOf="@+id/search_cancel_btn"/>
+
+        <ImageButton
+            android:id="@+id/search_cancel_btn"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/close_icon"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:visibility="invisible"/>
 
     </RelativeLayout>
 
@@ -71,26 +83,43 @@
             android:id="@+id/location_icon"
             android:layout_width="25dp"
             android:layout_height="25dp"
-            android:src="@drawable/location_icon"
+            android:src="@drawable/location_icon_grey"
             android:layout_centerVertical="true"/>
 
         <TextView
             android:id="@+id/where_tv_going_to"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="17dp"
             android:textColor="@color/primaryTextColor"
             android:text="Use current location"
             android:layout_toEndOf="@+id/location_icon"
+            android:layout_marginStart="10dp"
             android:layout_centerVertical="true"/>
 
-        <ImageView
-             android:scaleType="fitXY"
-             android:layout_width="30dp"
-             android:layout_height="30dp"
-             android:layout_alignParentEnd="true"
-             android:layout_centerVertical="true"
-             android:src="@drawable/arrow_next"/>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/search_history_item_arrow"
+                android:scaleType="fitXY"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/arrow_next"/>
+
+<!--            <ImageView-->
+<!--                android:id="@+id/search_history_item_checked"-->
+<!--                android:scaleType="fitXY"-->
+<!--                android:layout_width="30dp"-->
+<!--                android:layout_height="30dp"-->
+<!--                android:layout_alignParentEnd="true"-->
+<!--                android:layout_centerVertical="true"-->
+<!--                android:src="@drawable/arrow_next"/>-->
+
+        </RelativeLayout>
 
     </RelativeLayout>
 
@@ -99,7 +128,8 @@
         android:layout_height="1dp"
         android:background="@android:color/darker_gray"
         android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"/>
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="5dp"/>
 
     <ListView
         android:id="@+id/search_history_list_view"
@@ -107,10 +137,30 @@
         android:layout_height="match_parent"
         android:visibility="gone"/>
 
-    <jrizani.jrmapview.JRMapView
-        android:id="@+id/mapView"
+    <RelativeLayout
+        android:id="@+id/map_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="visible"/>
+
+        android:visibility="gone">
+
+        <jrizani.jrmapview.JRMapView
+            android:id="@+id/mapView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/next_pick_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/ic_arrow_forward_white_24dp"
+            app:fabSize="mini"
+            app:useCompatPadding="true"
+            app:backgroundTint="@android:color/holo_blue_light" />
+
+    </RelativeLayout>
+
 
 </LinearLayout>

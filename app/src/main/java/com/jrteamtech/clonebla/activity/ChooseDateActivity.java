@@ -29,11 +29,17 @@ public class ChooseDateActivity extends AppCompatActivity implements com.jrteamt
 
     private String[] weeks = {"Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"};
 
+    private String activity_name = "";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_date);
+
+        if(getIntent() != null){
+            activity_name = getIntent().getStringExtra(getResources().getString(R.string.activity_name));
+        }
 
         dayPickerView = (DayPickerView) findViewById(R.id.pickerView);
         multi     = (ImageView)findViewById(R.id.multi);
@@ -78,8 +84,10 @@ public class ChooseDateActivity extends AppCompatActivity implements com.jrteamt
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        Intent intent = new Intent(this,SeleteTimeActivity.class);
-        Log.e("Day Selected", day + " / " + month + " / " + year);
+
+        Intent intent = new Intent(this, SelectTimeActivity.class);
+        intent.putExtra(getResources().getString(R.string.activity_name), activity_name);
+//        Log.e("Day Selected", day + " / " + month + " / " + year);
         startActivity(intent);
         finish();
     }
