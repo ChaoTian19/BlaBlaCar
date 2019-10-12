@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/dimen_20dp"
+    tools:context=".activity.EmailPushnotificationActivity">
+
+
+
+    <ImageView
+        android:id="@+id/beforebtn"
+        android:layout_marginTop="@dimen/dimen_32dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:background="@drawable/ic_arrow_blue_24dp"/>
+
+    <TextView
+        android:layout_marginLeft="@dimen/dimen_12dp"
+        android:layout_marginTop="@dimen/dimen_20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Email"
+        android:textColor="@color/design_dark_default_color_background"
+        android:textStyle="bold"
+        android:textSize="@dimen/dimen_32dp"
+        />
+    <EditText
+        android:layout_marginTop="@dimen/dimen_20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
+
+    <RelativeLayout
+        android:layout_marginTop="@dimen/dimen_32dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/dimen_12dp"
+        android:paddingRight="@dimen/dimen_12dp"
+        >
+
+        <TextView
+            android:layout_marginTop="@dimen/text_size_28sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="News, deals and free stuff"
+            android:textColor="@color/design_dark_default_color_background"
+            android:textStyle="bold"
+            android:layout_centerVertical="true"
+
+            />
+        <ImageView
+            android:id="@+id/yourrides"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/tickblue"
+            android:layout_alignParentRight="true" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_marginTop="@dimen/dimen_20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/dimen_12dp"
+        android:paddingRight="@dimen/dimen_12dp"
+        >
+
+        <TextView
+            android:layout_marginTop="@dimen/text_size_28sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Messages"
+            android:textColor="@color/design_dark_default_color_background"
+            android:textStyle="bold"
+            android:layout_centerVertical="true"
+            />
+        <ImageView
+            android:id="@+id/news"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/tickblue"
+            android:layout_alignParentRight="true" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_marginTop="@dimen/dimen_20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/dimen_12dp"
+        android:paddingRight="@dimen/dimen_12dp"
+        >
+
+        <TextView
+            android:layout_marginTop="@dimen/text_size_28sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ratings"
+            android:textColor="@color/design_dark_default_color_background"
+            android:textStyle="bold"
+            android:layout_centerVertical="true"
+            />
+        <ImageView
+            android:id="@+id/messages"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/tickblue"
+            android:layout_alignParentRight="true" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_marginTop="@dimen/dimen_20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/dimen_12dp"
+        android:paddingRight="@dimen/dimen_12dp"
+        >
+
+        <TextView
+            android:layout_marginTop="@dimen/text_size_28sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Publishing \u0026 editing rides"
+            android:textColor="@color/design_dark_default_color_background"
+            android:textStyle="bold"
+            android:layout_centerVertical="true"
+            />
+        <ImageView
+            android:id="@+id/rating"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/tickblue"
+            android:layout_alignParentRight="true" />
+    </RelativeLayout>
+
+</LinearLayout>

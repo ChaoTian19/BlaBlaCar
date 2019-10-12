@@ -62,6 +62,9 @@ public class DetailFragment extends Fragment implements View.OnClickListener {
         this.tvAddCar = (TextView) view.findViewById(R.id.tv_add_car);
         this.tvSeePublicProfile = (TextView) view.findViewById(R.id.tv_see_public_profile);
         this.imageVerification = (ImageView) view.findViewById(R.id.image_verification);
+
+
+
         this.tvMiniBio.setOnClickListener(this);
         this.tvAddPreference.setOnClickListener(this);
         this.tvVerifyID.setOnClickListener(this);

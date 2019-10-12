@@ -173,4 +173,5 @@
                 android:paddingEnd="@dimen/dimen_32dp" />
         </androidx.cardview.widget.CardView>
     </LinearLayout>
+
 </ScrollView>

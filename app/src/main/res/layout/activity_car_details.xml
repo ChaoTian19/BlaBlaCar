@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.CarDetailsActivity"
+    android:background="@color/white">
+
+    <include
+        android:id="@+id/layout_toolbar"
+        layout="@layout/toolbar"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/dimen_24dp">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="What make is your car?"
+        android:textColor="@color/design_dark_default_color_background"
+        android:textStyle="bold"
+        android:textSize="@dimen/dimen_20dp"/>
+
+        <RelativeLayout
+            android:layout_marginTop="@dimen/dimen_32dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+        <ImageView
+            android:layout_marginLeft="@dimen/dimen_20dp"
+            android:layout_marginTop="@dimen/dimen_48dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_centerVertical="true"
+            android:background="@drawable/search"/>
+        <EditText
+            android:layout_marginStart="@dimen/dimen_56dp"
+            android:id="@+id/searchedit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:hint="Search"/>
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Popular makes"
+            android:textSize="@dimen/dimen_20dp"
+            android:textColor="@color/design_dark_default_color_background"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/volkswagen"
+            android:layout_marginTop="@dimen/dimen_20dp"
+            android:layout_marginStart="@dimen/dimen_36dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="VOLKSWAGEN"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/ford"
+            android:layout_marginTop="@dimen/dimen_20dp"
+            android:layout_marginStart="@dimen/dimen_36dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="FORD"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/bmw"
+            android:layout_marginTop="@dimen/dimen_20dp"
+            android:layout_marginStart="@dimen/dimen_36dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="BMW"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold"/>
+
+        <TextView
+        android:id="@+id/VAUXHALL"
+        android:layout_marginTop="@dimen/dimen_20dp"
+        android:layout_marginStart="@dimen/dimen_36dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="VAUXHALL"
+        android:textColor="@color/colorPrimary"
+        android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/AUDI"
+            android:layout_marginTop="@dimen/dimen_20dp"
+            android:layout_marginStart="@dimen/dimen_36dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="AUDI"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold"/>
+
+
+
+
+    </LinearLayout>
+
+</LinearLayout>

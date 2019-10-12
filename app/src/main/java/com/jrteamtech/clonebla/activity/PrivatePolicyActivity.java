@@ -8,8 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.jrteamtech.clonebla.R;
 
 public class PrivatePolicyActivity extends AppCompatActivity {
-
-    WebView webView;
+    private  WebView webView;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

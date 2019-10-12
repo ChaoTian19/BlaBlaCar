@@ -77,6 +77,8 @@
         <activity
             android:name=".fragment.SearchFragment"
             android:screenOrientation="portrait" />
+        <activity android:name=".fragment.AccountFragment"
+            android:screenOrientation="portrait"/>
         <activity android:name=".activity.VerifyMyIdActivity"
             android:screenOrientation="portrait" />
         <activity android:name=".activity.VerifyPhoneNumberActivity"
@@ -90,6 +92,37 @@
         <activity android:name=".activity.TermsConditionsActivity"
             android:screenOrientation="portrait"/>
         <activity android:name=".activity.HelpActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.PastTransfterActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.BankDetailsActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.PayPalAccountActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.WebViewActivity"
+            android:screenOrientation="portrait"
+            />
+        <activity android:name=".activity.BankAccountActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.PaymentHistoryActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.AwaitingTransferActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.RatingsLeftActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.ChangePasswordActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.PostalAddressActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.NotificationCommunicationActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.PushNotificationsActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.EmailPushnotificationActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.MessagingTitleActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.CarDetailsActivity"
             android:screenOrientation="portrait"/>
         <activity
             android:name=".activity.SplashActivity"

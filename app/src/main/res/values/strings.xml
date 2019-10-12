@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="sans_serif" translatable="false">sans-serif</string>
+    <string name="Postaladdress">We just need a postal address so the postman can find you.</string>
 
 
     <string name="field_required">This field is required</string>
@@ -103,7 +104,13 @@ Unless required by applicable law or agreed to in writing, software distributed 
     <string name="linces_sentence14"></string>
 
 
-
+    <string name="transfer">Here you can find a list of the transfers that are in progress of have heen successfully completed.</string>
+    <string name="bankdetails">To get your passengers payments, please tell us how you want us to send the money.</string>
+    <string name="termsconditions">   </string>
+    <string name="paypal">If you don\u0027t yet have a PayPal account,enter your email address and you\u0027ll have receive an email enabling you to create one.</string>
+    <string name="bankaccount">Get your money directly to the bank account of your choice. you\u0027ll see it in your account in 1-5 weekdays.</string>
+    <string name="paymenthistory">Here you can find a list of your payments made on BlaBlaCar, as well as any pending or completed refunds.</string>
+    <string name="awaitingtransfers">We automatically send your money 48 hours after departure time. You\u0027ll see the money in your bank or PayPal account in 1 to 5 weekdays.</string>
 
     <string name="action_edit_my_email">Edit my email</string>
     <string name="action_edit_my_photo">Edit my photo</string>
