@@ -13,54 +13,102 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/label_find_a_ride" />
-    <TextView
-        android:textSize="@dimen/text_size_16sp"
-        android:textColor="@android:color/black"
-        android:id="@+id/tv_leaving_from"
-        android:background="@drawable/background_lavender"
-        android:padding="@dimen/dimen_16dp"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dimen_24dp"
-        android:hint="@string/leaving_from"
-        />
-    <TextView
-        android:textSize="@dimen/text_size_16sp"
-        android:textColor="@android:color/black"
-        android:id="@+id/tv_going_to"
-        android:background="@drawable/background_lavender"
-        android:padding="@dimen/dimen_16dp"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dimen_16dp"
-        android:hint="@string/going_to" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_leaving_from"
+                android:textSize="@dimen/text_size_16sp"
+                android:textColor="@android:color/black"
+                android:background="@drawable/background_lavender"
+                android:padding="@dimen/dimen_12dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:hint="@string/leaving_from"
+                android:clickable="true"
+                android:focusable="true"/>
+
+            <TextView
+                android:id="@+id/tv_going_to"
+                android:textSize="@dimen/text_size_16sp"
+                android:textColor="@android:color/black"
+                android:background="@drawable/background_lavender"
+                android:padding="@dimen/dimen_12dp"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:hint="@string/going_to"
+                android:clickable="true"
+                android:focusable="true" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/exchange_location_btn"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/circle_white_bg"
+            android:src="@drawable/exchange_icon"
+            android:padding="5dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="20dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:visibility="gone"/>
+
+    </RelativeLayout>
+
     <View
         android:background="@color/LinkWater"
         android:layout_width="fill_parent"
         android:layout_height="@dimen/view_heght_1dp"
         android:layout_marginTop="@dimen/dimen_16dp" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dimen_14dp"
-        android:text="@string/date_and_time" />
-    <TextView
-        android:id="@+id/calendardate"
-        android:textSize="@dimen/text_size_16sp"
-        android:textColor="@color/colorPrimary"
+
+    <LinearLayout
+        android:id="@+id/pick_date_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dimen_4dp"
-        android:text="@string/today" />
+        android:orientation="vertical"
+        android:layout_marginTop="5dp"
+        android:clickable="true"
+        android:focusable="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/date_and_time" />
+
+        <TextView
+            android:id="@+id/calendardate"
+            android:textSize="@dimen/text_size_16sp"
+            android:textColor="@color/colorPrimary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_4dp"
+            android:text="@string/today" />
+
+    </LinearLayout>
+
     <View
         android:background="@color/LinkWater"
         android:layout_width="fill_parent"
         android:layout_height="@dimen/view_heght_1dp"
-        android:layout_marginTop="@dimen/dimen_16dp" />
+        android:layout_marginTop="@dimen/dimen_12dp" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_addresslist"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"/>
     <Button
         android:textSize="@dimen/text_size_14sp"
         android:textStyle="bold"

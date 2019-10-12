@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="google_map_api_key">AIzaSyALThamZB2MCS-PS2zgcR3-BG3XujFLJzo</string>
     <string name="sans_serif" translatable="false">sans-serif</string>
 
 
