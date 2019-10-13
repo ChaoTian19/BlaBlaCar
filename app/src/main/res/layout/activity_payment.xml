@@ -20,7 +20,7 @@
         android:textSize="12dp"
         android:textColor="@android:color/black"
         android:textAlignment="center"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="50dp"/>
 
     <TextView
         android:id="@+id/price_view"
@@ -45,11 +45,11 @@
     <TextView
         android:id="@+id/continue_btn"
         android:layout_width="match_parent"
-        android:layout_height="35dp"
+        android:layout_height="45dp"
         android:background="@drawable/login_btn_background"
         android:text="Continue"
         android:textColor="@android:color/white"
-        android:textSize="11sp"
+        android:textSize="16dp"
         android:textStyle="bold"
         android:gravity="center"
         android:layout_marginTop="20dp"
@@ -63,7 +63,7 @@
         android:background="?android:attr/selectableItemBackground"
         android:text="I don't agree"
         android:textStyle="bold"
-        android:textSize="11sp"
+        android:textSize="16dp"
         android:textColor="@android:color/holo_blue_light"
         android:gravity="center"
         android:layout_marginTop="10dp"/>

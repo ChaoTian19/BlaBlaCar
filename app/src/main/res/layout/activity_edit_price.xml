@@ -21,7 +21,7 @@
         android:layout_height="wrap_content"
         android:text="Edit the price"
         android:textColor="@android:color/black"
-        android:textSize="13sp"
+        android:textSize="@dimen/text_size_18sp"
         android:layout_below="@+id/img_back_arrow"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"/>
@@ -39,7 +39,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="United States >> United Kingdom"
-            android:textSize="11sp"
+            android:textSize="16sp"
             android:textColor="@android:color/black"
             android:textStyle="bold"/>
 
@@ -58,7 +58,7 @@
                 android:text="ㅡ"
                 android:textColor="@android:color/holo_blue_light"
                 android:textStyle="bold"
-                android:textSize="10sp"
+                android:textSize="12sp"
                 android:gravity="center"
                 android:clickable="true"
                 android:focusable="true" />
@@ -68,7 +68,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="$192"
-                android:textSize="15sp"
+                android:textSize="17sp"
                 android:textColor="@android:color/holo_green_dark"
                 android:textStyle="bold"
                 android:layout_marginStart="10dp"
@@ -82,7 +82,7 @@
                 android:text="+"
                 android:textColor="@android:color/holo_blue_light"
                 android:textStyle="bold"
-                android:textSize="10sp"
+                android:textSize="12sp"
                 android:gravity="center"
                 android:clickable="true"
                 android:focusable="true" />

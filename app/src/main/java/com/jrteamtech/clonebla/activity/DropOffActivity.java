@@ -6,6 +6,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,7 +15,7 @@ import com.jrteamtech.clonebla.R;
 
 public class DropOffActivity extends AppCompatActivity implements View.OnClickListener, TextWatcher {
 
-    ImageView back_arrow_btn;
+    ImageButton back_arrow_btn;
     EditText et_location_search;
 
     @Override

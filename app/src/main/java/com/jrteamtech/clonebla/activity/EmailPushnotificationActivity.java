@@ -15,7 +15,7 @@ import com.jrteamtech.clonebla.R;
 
 public class EmailPushnotificationActivity extends AppCompatActivity {
 
-    private ImageView backbtn;
+    private ImageButton backbtn;
 
 
     private ImageButton uncheck_btn, check_btn,uncheck_btn1,check_btn1,uncheck_btn2,check_btn2,uncheck_btn3,check_btn3;
@@ -33,7 +33,8 @@ public class EmailPushnotificationActivity extends AppCompatActivity {
         backbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(EmailPushnotificationActivity.this,NotificationCommunicationActivity.class));
+              //  startActivity(new Intent(EmailPushnotificationActivity.this,NotificationCommunicationActivity.class));
+             finish();
             }
         });
 

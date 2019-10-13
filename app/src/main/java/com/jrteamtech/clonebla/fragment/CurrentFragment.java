@@ -7,6 +7,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.jrteamtech.clonebla.R;
+import com.jrteamtech.clonebla.activity.HomeActivity;
 import com.jrteamtech.clonebla.activity.PickUpActivity;
 import com.jrteamtech.clonebla.activity.SearchActivity;
 
@@ -47,7 +50,16 @@ public class CurrentFragment extends Fragment implements View.OnClickListener {
         if (view.getId() == R.id.btn_offer_ride) {
             startActivity(new Intent(getContext(), PickUpActivity.class));
         } else if (view.getId() == R.id.btn_find_ride) {
-            startActivity(new Intent(getContext(), SearchActivity.class));
+         //   startActivity(new Intent(getContext(), SearchActivity.class));
+
+//            SearchFragment searchFragment = new SearchFragment();
+//            FragmentManager supportFragmentManager = getActivity().getSupportFragmentManager();
+//            FragmentTransaction beginTransaction = supportFragmentManager.beginTransaction();
+//            beginTransaction.replace(R.id.frame_container, searchFragment);
+//            supportFragmentManager.popBackStack((String) null, 1);
+//            beginTransaction.commit();
+            ((HomeActivity)getActivity()).onNavigationItemSelected(HomeActivity.bottom_menu.findItem(R.id.action_search));
+            HomeActivity.bottom_menu.findItem(R.id.action_search).setChecked(true);
         }
     }
 }

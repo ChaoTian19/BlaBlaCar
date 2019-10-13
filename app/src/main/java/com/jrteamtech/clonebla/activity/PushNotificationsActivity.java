@@ -15,7 +15,7 @@ import com.jrteamtech.clonebla.R;
 
 public class PushNotificationsActivity extends AppCompatActivity {
 
-    private ImageView backbtn;
+    private ImageButton backbtn;
     private ImageView yourridestick,newstick,messagestick,ratingstick;
     private ImageButton uncheck_btn, check_btn,uncheck_btn1,check_btn1,uncheck_btn2,check_btn2,uncheck_btn3,check_btn3;
     private ProgressBar progressBar,progressBar1,progressBar2,progressBar3;

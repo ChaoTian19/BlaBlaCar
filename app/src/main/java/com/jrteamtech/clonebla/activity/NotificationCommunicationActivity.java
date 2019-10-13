@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 
@@ -20,7 +21,8 @@ import com.jrteamtech.clonebla.fragment.ProfileFragment;
 
 public class NotificationCommunicationActivity extends AppCompatActivity {
 
-    private ImageView beforebtn, pushnotificationsbtn,emailbtn,messagingtitlebtn;
+    private ImageView  pushnotificationsbtn,emailbtn,messagingtitlebtn;
+    private ImageButton beforebtn;
 
     ProgressDialog progressDialog;
 
@@ -52,6 +54,7 @@ public class NotificationCommunicationActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(NotificationCommunicationActivity.this,PushNotificationsActivity.class));
+
             }
         });
 
@@ -59,6 +62,7 @@ public class NotificationCommunicationActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                  startActivity(new Intent(NotificationCommunicationActivity.this,MessagingTitleActivity.class));
+
             }
         });
 
@@ -66,6 +70,7 @@ public class NotificationCommunicationActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(NotificationCommunicationActivity.this,EmailPushnotificationActivity.class));
+
             }
         });
 
