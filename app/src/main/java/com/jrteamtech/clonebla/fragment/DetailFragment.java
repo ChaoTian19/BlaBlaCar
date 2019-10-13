@@ -20,6 +20,8 @@ import com.jrteamtech.clonebla.R;
 import com.jrteamtech.clonebla.activity.AddCarActivity;
 import com.jrteamtech.clonebla.activity.AddPreferenceActivity;
 import com.jrteamtech.clonebla.activity.EditProfileActivity;
+import com.jrteamtech.clonebla.activity.SearchActivity;
+import com.jrteamtech.clonebla.activity.SeePublicProfileActivity;
 import com.jrteamtech.clonebla.activity.VerifyMyIdActivity;
 import com.jrteamtech.clonebla.activity.VerifyPhoneNumberActivity;
 
@@ -60,6 +62,9 @@ public class DetailFragment extends Fragment implements View.OnClickListener {
         this.tvAddCar = (TextView) view.findViewById(R.id.tv_add_car);
         this.tvSeePublicProfile = (TextView) view.findViewById(R.id.tv_see_public_profile);
         this.imageVerification = (ImageView) view.findViewById(R.id.image_verification);
+
+
+
         this.tvMiniBio.setOnClickListener(this);
         this.tvAddPreference.setOnClickListener(this);
         this.tvVerifyID.setOnClickListener(this);
@@ -76,7 +81,12 @@ public class DetailFragment extends Fragment implements View.OnClickListener {
         popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             public boolean onMenuItemClick(MenuItem menuItem) {
                 if (menuItem.getItemId() == R.id.action_edit_my_email) {
-                    Toast.makeText(DetailFragment.this.getContext(), DetailFragment.this.getResources().getString(R.string.action_edit_my_email), Toast.LENGTH_LONG).show();
+                    startActivity(new Intent(getContext(),EditProfileActivity.class));
+                  //  Toast.makeText(DetailFragment.this.getContext(), DetailFragment.this.getResources().getString(R.string.action_edit_my_email), Toast.LENGTH_LONG).show();
+                }
+                else if(menuItem.getItemId() == R.id.action_edit_my_phone){
+                  //  Toast.makeText(getContext(),"Edit my photo",Toast.LENGTH_LONG).show();
+                    startActivity(new Intent(getContext(),VerifyPhoneNumberActivity.class));
                 }
                 return false;
             }
@@ -98,12 +108,21 @@ public class DetailFragment extends Fragment implements View.OnClickListener {
 
     private void addverifymyid(){
         startActivity(new Intent(getContext(), VerifyMyIdActivity.class));
+
+
     }
 
     private void addverifyphone(){
         startActivity(new Intent(getContext(), VerifyPhoneNumberActivity.class));
     }
 
+    private void addverifyemail(){
+        startActivity(new Intent(getContext(), EditProfileActivity.class));
+    }
+    private void seepublicprofile(){
+        startActivity(new Intent(getContext(), SeePublicProfileActivity.class));
+
+    }
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.image_verification /*2131230905*/:
@@ -124,6 +143,12 @@ public class DetailFragment extends Fragment implements View.OnClickListener {
             case  R.id.tv_add_phone:
                   addverifyphone();
                   return;
+            case R.id.tv_verify_email:
+                   addverifyemail();
+                   return;
+            case  R.id.tv_see_public_profile:
+                    seepublicprofile();
+                    return;
             default:
                 return;
         }

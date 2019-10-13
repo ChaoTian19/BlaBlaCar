@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toolbar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,6 +18,7 @@ import androidx.appcompat.widget.PopupMenu.OnMenuItemClickListener;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.tabs.TabLayout;
 import com.jrteamtech.clonebla.R;
 import com.jrteamtech.clonebla.activity.ChooseProfilePhotoActivity;
@@ -31,10 +33,16 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
     private TextView tvUserStatus;
     private ViewPager viewPager;
 
+    private BottomNavigationView bottomNavigationView;
+    private FrameLayout frameContainer;
+    private Toolbar toolbar;
+
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         getArguments();
+
     }
+
 
     public View onCreateView(@NonNull LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
         return layoutInflater.inflate(R.layout.fragment_profile, viewGroup, false);

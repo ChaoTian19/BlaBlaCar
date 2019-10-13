@@ -141,6 +141,7 @@
         android:id="@+id/map_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+
         android:visibility="gone">
 
         <jrizani.jrmapview.JRMapView
@@ -160,5 +161,6 @@
             app:backgroundTint="@android:color/holo_blue_light" />
 
     </RelativeLayout>
+
 
 </LinearLayout>

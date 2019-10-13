@@ -22,9 +22,11 @@ public class HistoryFragment extends Fragment {
     }
 
     public View onCreateView(@NonNull LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
-//        return layoutInflater.inflate(R.layout.fragment_history, viewGroup, false);
-        return null;
+      return layoutInflater.inflate(R.layout.fragment_history, viewGroup, false);
+       // return null;
     }
+
+
 
     public void onViewCreated(@NonNull View view, @Nullable Bundle bundle) {
 //        super.onViewCreated(view, bundle);

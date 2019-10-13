@@ -43,40 +43,9 @@
             />
     </LinearLayout>
 
-    <LinearLayout
+    <FrameLayout
+        android:id="@+id/verify_phone_number_frame"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="30dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Region"/>
-        <fr.ganfra.materialspinner.MaterialSpinner
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/regionchoose"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Phone number"
-            android:textColor="@color/grey">
-        </TextView>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/phonenumberid"
-            />
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/background_primary"
-            android:text="VERIFY"
-            android:textColor="@color/white"
-            android:id="@+id/phoneverify"/>
-
-
-    </LinearLayout>
+        android:layout_height="match_parent"/>
 
 </LinearLayout>

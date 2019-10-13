@@ -5,6 +5,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 import android.widget.Toast;
 
@@ -22,7 +23,7 @@ import static java.security.AccessController.getContext;
 public class AddPreferenceActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Toolbar toolbar;
-    private MaterialSpinner chattines,smoking,music,pets;
+    private Spinner chattines,smoking,music,pets;
     private String[] chattinesitem = {"I'm the quiet type","I talk depending on my mood","I love to chat!"};
     private String[] smokingitem = {"No smoking please","Somking is OK sometimes","Smoking doesn't bother me"};
     private String[] musicitem = {"Silence is golden","I listen to music if i fancy it","It's all about the playlist"};
@@ -34,10 +35,10 @@ public class AddPreferenceActivity extends AppCompatActivity implements View.OnC
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_addperference);
 
-        this.chattines = (MaterialSpinner) findViewById(R.id.chattiness);
-        this.smoking = (MaterialSpinner) findViewById(R.id.smoking);
-        this.music = (MaterialSpinner) findViewById(R.id.music);
-        this.pets = (MaterialSpinner) findViewById(R.id.pets);
+        this.chattines = (Spinner) findViewById(R.id.chattiness);
+        this.smoking = (Spinner) findViewById(R.id.smoking);
+        this.music = (Spinner) findViewById(R.id.music);
+        this.pets = (Spinner) findViewById(R.id.pets);
 
         setAdapter();
         setToolbar();
