@@ -21,8 +21,15 @@ public class ThinkComfortActivity extends AppCompatActivity implements View.OnCl
         setContentView(R.layout.activity_think_comfort);
 
         back_arrow_btn = findViewById(R.id.img_back_arrow);
-        yes_btn = findViewById(R.id.yes_comfort_btn);
-        no_btn = findViewById(R.id.no_comfort_btn);
+
+
+        yes_btn = findViewById(R.id.yes_btn);
+        no_btn = findViewById(R.id.no_btn);
+
+        back_arrow_btn.setOnClickListener(this);
+        yes_btn.setOnClickListener(this);
+        no_btn.setOnClickListener(this);
+
     }
 
     @Override
@@ -31,11 +38,11 @@ public class ThinkComfortActivity extends AppCompatActivity implements View.OnCl
             case R.id.img_back_arrow:
                 finish();
                 break;
-            case R.id.yes_comfort_btn:
+            case R.id.yes_btn:
                 String yes = "yes";
                 startActivity(new Intent(ThinkComfortActivity.this, ChoosePassengerActivity.class));
                 break;
-            case R.id.no_comfort_btn:
+            case R.id.no_btn:
                 String no = "no";
                 startActivity(new Intent(ThinkComfortActivity.this, ChoosePassengerActivity.class));
                 break;

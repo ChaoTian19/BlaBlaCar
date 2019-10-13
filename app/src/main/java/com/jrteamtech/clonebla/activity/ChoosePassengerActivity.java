@@ -1,5 +1,6 @@
 package com.jrteamtech.clonebla.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -32,6 +33,11 @@ public class ChoosePassengerActivity extends AppCompatActivity implements View.O
 
         count_view.setText(String.valueOf(count));
 
+        back_arrow_btn.setOnClickListener(this);
+        minus_counter_btn.setOnClickListener(this);
+        plus_counter_btn.setOnClickListener(this);
+        next_btn.setOnClickListener(this);
+
     }
 
     @Override
@@ -53,6 +59,8 @@ public class ChoosePassengerActivity extends AppCompatActivity implements View.O
                 count_view.setText(String.valueOf(count));
                 break;
             case R.id.next_btn:
+
+                startActivity(new Intent(ChoosePassengerActivity.this,BookPassengerActivity.class));
                 break;
         }
     }

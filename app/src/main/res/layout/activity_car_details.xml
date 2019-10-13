@@ -17,6 +17,7 @@
         android:orientation="vertical"
         android:padding="@dimen/dimen_24dp">
     <TextView
+        android:id="@+id/question_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="What make is your car?"
@@ -47,6 +48,7 @@
         </RelativeLayout>
 
         <TextView
+            android:id="@+id/popular_title_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Popular makes"
@@ -54,57 +56,12 @@
             android:textColor="@color/design_dark_default_color_background"
             android:textStyle="bold"/>
 
-        <TextView
-            android:id="@+id/volkswagen"
-            android:layout_marginTop="@dimen/dimen_20dp"
-            android:layout_marginStart="@dimen/dimen_36dp"
-            android:layout_width="wrap_content"
+        <ListView
+            android:id="@+id/popular_listview"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="VOLKSWAGEN"
-            android:textColor="@color/colorPrimary"
-            android:textStyle="bold"/>
-        <TextView
-            android:id="@+id/ford"
-            android:layout_marginTop="@dimen/dimen_20dp"
-            android:layout_marginStart="@dimen/dimen_36dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="FORD"
-            android:textColor="@color/colorPrimary"
-            android:textStyle="bold"/>
-        <TextView
-            android:id="@+id/bmw"
-            android:layout_marginTop="@dimen/dimen_20dp"
-            android:layout_marginStart="@dimen/dimen_36dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="BMW"
-            android:textColor="@color/colorPrimary"
-            android:textStyle="bold"/>
-
-        <TextView
-        android:id="@+id/VAUXHALL"
-        android:layout_marginTop="@dimen/dimen_20dp"
-        android:layout_marginStart="@dimen/dimen_36dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="VAUXHALL"
-        android:textColor="@color/colorPrimary"
-        android:textStyle="bold"/>
-
-        <TextView
-            android:id="@+id/AUDI"
-            android:layout_marginTop="@dimen/dimen_20dp"
-            android:layout_marginStart="@dimen/dimen_36dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="AUDI"
-            android:textColor="@color/colorPrimary"
-            android:textStyle="bold"/>
-
-
-
-
+            android:divider="@android:color/transparent"
+            android:layout_marginTop="10dp"/>
     </LinearLayout>
 
 </LinearLayout>

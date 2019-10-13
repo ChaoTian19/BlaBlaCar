@@ -36,7 +36,7 @@
         android:layout_height="20dp"/>
 
     <RelativeLayout
-        android:id="@+id/yes_comfort_btn"
+        android:id="@+id/yes_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?android:attr/selectableItemBackground"
@@ -69,7 +69,7 @@
         android:layout_marginBottom="5dp"/>
 
     <RelativeLayout
-        android:id="@+id/no_comfort_btn"
+        android:id="@+id/no_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?android:attr/selectableItemBackground"

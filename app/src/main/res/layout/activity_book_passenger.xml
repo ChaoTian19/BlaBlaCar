@@ -31,7 +31,7 @@
         android:layout_marginTop="10dp"/>
 
     <RelativeLayout
-        android:id="@+id/yes_book_btn"
+        android:id="@+id/yes_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?android:attr/selectableItemBackground"
@@ -65,7 +65,7 @@
         android:layout_marginBottom="5dp"/>
 
     <RelativeLayout
-        android:id="@+id/no_book_btn"
+        android:id="@+id/no_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?android:attr/selectableItemBackground"

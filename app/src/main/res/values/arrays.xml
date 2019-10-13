@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="popular_makes">
+        <item>VOLKSWAGEN</item>
+        <item>FORD</item>
+        <item>BMW</item>
+        <item>VAUXHALL</item>
+        <item>AUDI</item>
+    </string-array>
+
+    <string-array name="VOLKSWAGEN">
+        <item>POLO</item>
+        <item>PASSAT</item>
+        <item>GOLF</item>
+        <item>1,6L</item>
+        <item>1600</item>
+    </string-array>
+
+    <string-array name="FORD">
+        <item>FOCUS</item>
+        <item>FIESTA</item>
+        <item>MONDEO</item>
+        <item>C-MAX</item>
+        <item>TRANSIT</item>
+    </string-array>
+
+    <string-array name="BMW">
+        <item>3 series</item>
+        <item>1 series</item>
+        <item>2 Series</item>
+        <item>2 Series Active Tourer</item>
+        <item>2 Series Gran Tourer</item>
+    </string-array>
+
+    <string-array name="VAUXHALL">
+        <item>ASTRA</item>
+        <item>CORSA</item>
+        <item>VECTRA</item>
+        <item>ZAFIRA</item>
+        <item>INSIGNIA</item>
+    </string-array>
+
+    <string-array name="AUDI">
+        <item>A4</item>
+        <item>A3</item>
+        <item>A6</item>
+        <item>A1</item>
+        <item>100</item>
+    </string-array>
+</resources>

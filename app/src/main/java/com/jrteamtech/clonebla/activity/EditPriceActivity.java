@@ -30,6 +30,11 @@ public class EditPriceActivity extends AppCompatActivity implements View.OnClick
         plus_counter_btn = findViewById(R.id.plus_counter_btn);
         price_view = findViewById(R.id.price_view);
         confirm_btn = findViewById(R.id.confirm_btn);
+
+        back_arrow_btn.setOnClickListener(this);
+        minus_counter_btn.setOnClickListener(this);
+        plus_counter_btn.setOnClickListener(this);
+        confirm_btn.setOnClickListener(this);
     }
 
     @Override

@@ -19,13 +19,17 @@ public class PublishSuccessActivity extends AppCompatActivity implements View.On
         setContentView(R.layout.activity_publish_success);
 
         ok_btn = findViewById(R.id.ok_btn);
+
+        ok_btn.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.ok_btn:
-                startActivity(new Intent(PublishSuccessActivity.this, HomeActivity.class));
+                Intent intent = new Intent(PublishSuccessActivity.this, HomeActivity.class);
+                intent.putExtra("signUp", "");
+                startActivity(intent);
                 finish();
                 break;
         }

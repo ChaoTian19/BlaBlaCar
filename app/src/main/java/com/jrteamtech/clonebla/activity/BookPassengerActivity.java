@@ -23,6 +23,10 @@ public class BookPassengerActivity extends AppCompatActivity implements View.OnC
         back_arrow_btn = findViewById(R.id.img_back_arrow);
         yes_btn = findViewById(R.id.yes_btn);
         no_btn = findViewById(R.id.no_btn);
+
+        back_arrow_btn.setOnClickListener(this);
+        yes_btn.setOnClickListener(this);
+        no_btn.setOnClickListener(this);
     }
 
     @Override
