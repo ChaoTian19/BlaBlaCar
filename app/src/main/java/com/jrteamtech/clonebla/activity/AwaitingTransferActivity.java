@@ -1,9 +1,12 @@
 package com.jrteamtech.clonebla.activity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import androidx.appcompat.widget.Toolbar;
 
@@ -13,6 +16,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.jrteamtech.clonebla.R;
 
 public class AwaitingTransferActivity extends AppCompatActivity {
+
+    private ProgressDialog progressDialog;
 
     private TextView offeraride;
     private Toolbar toolbar;
@@ -24,6 +29,7 @@ public class AwaitingTransferActivity extends AppCompatActivity {
 
         offeraride = findViewById(R.id.offeraride);
         setToolbar();
+        showdialog();
 
 
         offeraride.setOnClickListener(new View.OnClickListener() {
@@ -33,6 +39,25 @@ public class AwaitingTransferActivity extends AppCompatActivity {
             }
         });
     }
+
+
+        private void showdialog(){
+            progressDialog = new ProgressDialog(this);
+            progressDialog.setMessage("Loading...");
+            progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+            progressDialog.show();
+
+            Runnable progressRunnable = new Runnable() {
+                @Override
+                public void run() {
+                    progressDialog.cancel();
+                }
+            };
+            Handler pdCanceller = new Handler();
+            pdCanceller.postDelayed(progressRunnable, 800);
+        }
+
+
 
     private void setToolbar(){
         this.toolbar = (androidx.appcompat.widget.Toolbar) findViewById(R.id.toolbar);

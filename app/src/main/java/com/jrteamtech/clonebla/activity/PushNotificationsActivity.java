@@ -27,11 +27,19 @@ public class PushNotificationsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_push_notifications);
 
+
+        backbtn = findViewById(R.id.beforebtn);
+
+        backbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
         backbtn = findViewById(R.id.beforebtn);
 //        yourridestick = findViewById(R.id.yourrides);
-        newstick = findViewById(R.id.news);
-        messagestick = findViewById(R.id.messages);
-        ratingstick = findViewById(R.id.rating);
+
 
         uncheck_btn = findViewById(R.id.uncheck_btn);
         check_btn = findViewById(R.id.check_btn);
@@ -214,6 +222,8 @@ public class PushNotificationsActivity extends AppCompatActivity {
                 }, 1000);
             }
         });
+
+
 
 
 
