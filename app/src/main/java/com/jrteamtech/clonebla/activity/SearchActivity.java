@@ -4,12 +4,10 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
-import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -28,17 +26,10 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.gson.JsonElement;
 import com.jrteamtech.clonebla.R;
 import com.jrteamtech.clonebla.adapter.SearchHistoryAdapter;
 import com.jrteamtech.clonebla.utility.Global;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.URL;
-import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -160,7 +151,7 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
         if (!s.toString().equals("")) {
             List<String> results = new ArrayList<>();
             String url = Global.GOOGLE_MAP_SEARCH_PLACE_URL + "?query=" + s.toString() + "&key=" + getResources().getString(R.string.google_map_api_key);
-            new ReadJsonFromUrl().execute(url);
+//            new ReadJsonFromUrl().execute(url);
 //            Call<GetXmlInfo> apiCall = ApiClient.getApiXmlClient().getXml();
 //            apiCall.enqueue(new Callback<GetXmlInfo>() {
 //                @Override
@@ -191,45 +182,45 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
         }
     }
 
-    private class ReadJsonFromUrl extends AsyncTask<String, Void, JsonElement> {
-        @Override
-        protected JsonElement doInBackground(String... urls) {
-            InputStream is = null;
-            try {
-                is = new URL(urls[0]).openStream();
-                BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
-                StringBuilder sb = new StringBuilder();
-                int cp;
-                while ((cp = rd.read()) != -1){
-                    sb.append((char)cp);
-                }
-                String jsonText = sb.toString();
-                Log.e("AAAAAAAAA", jsonText);
-                return null;
-            } catch (IOException e) {
-                e.printStackTrace();
-                return null;
-            } finally {
-                try {
-                    is.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-
-        @Override
-        protected void onPostExecute(JsonElement jsonElement) {
-            if(jsonElement != null){
+//    private class ReadJsonFromUrl extends AsyncTask<String, Void, JsonElement> {
+//        @Override
+//        protected JsonElement doInBackground(String... urls) {
+//            InputStream is = null;
+//            try {
+//                is = new URL(urls[0]).openStream();
+//                BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
+//                StringBuilder sb = new StringBuilder();
+//                int cp;
+//                while ((cp = rd.read()) != -1){
+//                    sb.append((char)cp);
+//                }
+//                String jsonText = sb.toString();
+//                Log.e("AAAAAAAAA", jsonText);
+//                return null;
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//                return null;
+//            } finally {
 //                try {
-//
-////                    Log.e("AAAAAAAAAA", );
-//                } catch (JSONException e) {
+//                    is.close();
+//                } catch (IOException e) {
 //                    e.printStackTrace();
 //                }
-            }
-        }
-    }
+//            }
+//        }
+//
+//        @Override
+//        protected void onPostExecute(JsonElement jsonElement) {
+//            if(jsonElement != null){
+////                try {
+////
+//////                    Log.e("AAAAAAAAAA", );
+////                } catch (JSONException e) {
+////                    e.printStackTrace();
+////                }
+//            }
+//        }
+//    }
 
 }
 

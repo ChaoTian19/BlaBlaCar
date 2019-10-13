@@ -129,10 +129,6 @@
             android:screenOrientation="portrait"/>
         <activity android:name=".activity.MessagingTitleActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name=".activity.CarDetailsActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activity.CarDetailsRegisteredActivity"
-            android:screenOrientation="portrait"/>
         <activity
             android:name=".activity.SplashActivity"
             android:screenOrientation="portrait"

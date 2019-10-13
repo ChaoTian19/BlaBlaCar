@@ -4,6 +4,22 @@
     <color name="selected_day_background">#00B7FF</color>
     <color name="selected_day_text">#fff2f2f2</color>
 
+    <color name="black">#000000</color>
+    <color name="white">#ffffff</color>
+    <color name="dark_grey">#505050</color>
+    <color name="grey">#808080</color>
+    <color name="burgundy">#5C0909</color>
+    <color name="red">#ff0000</color>
+    <color name="dark_blue">#01152E</color>
+    <color name="blue">#2D42B4</color>
+    <color name="dark_green">#1F310B</color>
+    <color name="green">#267703</color>
+    <color name="brown">#381802</color>
+    <color name="beige">#FAA085</color>
+    <color name="orange">#FF6600</color>
+    <color name="yellow">#FFEB3B</color>
+    <color name="purple">#7C1F8B</color>
+    <color name="pink">#E2BFE7</color>
 
     <color name="LinkWater">#cccdd0</color>
     <color name="Nero">#1b1b1b</color>
@@ -79,7 +95,6 @@
     <color name="error_color_material_light">#ff5722</color>
     <color name="foreground_material_dark">@android:color/white</color>
     <color name="foreground_material_light">@android:color/black</color>
-    <color name="grey">#808080</color>
     <color name="highlighted_text_material_dark">#6680cbc4</color>
     <color name="highlighted_text_material_light">#66009688</color>
     <color name="material_blue_grey_800">#ff37474f</color>
@@ -126,5 +141,4 @@
     <color name="switch_thumb_normal_material_light">#fff1f1f1</color>
     <color name="tooltip_background_dark">#e6616161</color>
     <color name="tooltip_background_light">#e6ffffff</color>
-    <color name="white">#ffffff</color>
 </resources>

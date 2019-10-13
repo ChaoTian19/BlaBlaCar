@@ -1,111 +1,111 @@
 package com.jrteamtech.clonebla.fragment;
 
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
 import com.jrteamtech.clonebla.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link CarDetailChooseModelFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link CarDetailChooseModelFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class CarDetailChooseModelFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private TextView question_view, popular_title_view;
+    private ListView popular_listview;
 
-    private OnFragmentInteractionListener mListener;
+    private List<String> popular_makes = new ArrayList<>();
+    private List<String> volk_models = new ArrayList<>();
+    private List<String> ford_models = new ArrayList<>();
+    private List<String> bmw_models = new ArrayList<>();
+    private List<String> vaux_models = new ArrayList<>();
+    private List<String> audi_models = new ArrayList<>();
+    private List<List<String>> models = new ArrayList<>();
 
-    public CarDetailChooseModelFragment() {
-        // Required empty public constructor
-    }
+    private String flag = "makes";
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment CarDetailChooseModelFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static CarDetailChooseModelFragment newInstance(String param1, String param2) {
-        CarDetailChooseModelFragment fragment = new CarDetailChooseModelFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
+    @Nullable
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_car_detail_choose_model, container, false);
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
-
     @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        question_view = view.findViewById(R.id.question_view);
+        popular_title_view = view.findViewById(R.id.popular_title_view);
+
+        popular_makes = Arrays.asList(getResources().getStringArray(R.array.popular_makes));
+        volk_models = Arrays.asList(getResources().getStringArray(R.array.VOLKSWAGEN));
+        ford_models = Arrays.asList(getResources().getStringArray(R.array.FORD));
+        bmw_models = Arrays.asList(getResources().getStringArray(R.array.BMW));
+        vaux_models = Arrays.asList(getResources().getStringArray(R.array.VAUXHALL));
+        audi_models = Arrays.asList(getResources().getStringArray(R.array.AUDI));
+
+        models.add(volk_models);
+        models.add(ford_models);
+        models.add(bmw_models);
+        models.add(vaux_models);
+        models.add(audi_models);
+
+        popular_listview = view.findViewById(R.id.popular_listview);
+        PopularListAdapter adapter = new PopularListAdapter(getContext(), 0, popular_makes);
+        popular_listview.setAdapter(adapter);
+    }
+
+    class PopularListAdapter extends ArrayAdapter<String> {
+
+        private Context mContext;
+
+        PopularListAdapter(Context context, int res, List<String> data) {
+            super(context, res, data);
+            this.mContext = context;
         }
-    }
 
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
-    }
+        @NonNull
+        @Override
+        public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+            if(convertView == null) {
+                LayoutInflater inflater = LayoutInflater.from(mContext);
+                convertView = inflater.inflate(R.layout.popular_list_item, null);
+            }
+
+            String item = getItem(position);
+            TextView item_view = convertView.findViewById(R.id.popular_item_view);
+            item_view.setText(item);
+
+            item_view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(flag.equals("model")){
+                        CarDetailChooseTypeFragment typeFragment = new CarDetailChooseTypeFragment();
+                        getActivity().getSupportFragmentManager().beginTransaction()
+                                .replace(R.id.add_car_detail_frame, typeFragment)
+                                .commit();
+                    } else {
+                        flag = "model";
+                        question_view.setText("What model?");
+                        popular_title_view.setText("Popular models");
+                        List<String> model = models.get(position);
+                        PopularListAdapter adapter = new PopularListAdapter(mContext, 0, model);
+                        popular_listview.setAdapter(adapter);
+                        notifyDataSetChanged();
+                    }
+                }
+            });
+
+            return convertView;
+        }
     }
 }

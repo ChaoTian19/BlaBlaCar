@@ -59,8 +59,7 @@ public class ChoosePassengerActivity extends AppCompatActivity implements View.O
                 count_view.setText(String.valueOf(count));
                 break;
             case R.id.next_btn:
-
-                startActivity(new Intent(ChoosePassengerActivity.this,BookPassengerActivity.class));
+                startActivity(new Intent(ChoosePassengerActivity.this, BookPassengerActivity.class));
                 break;
         }
     }

@@ -1,111 +1,128 @@
 package com.jrteamtech.clonebla.fragment;
 
 import android.content.Context;
-import android.net.Uri;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.RadioButton;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.core.graphics.drawable.DrawableCompat;
+import androidx.fragment.app.Fragment;
 
 import com.jrteamtech.clonebla.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link CarDetailChooseColorFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link CarDetailChooseColorFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.ArrayList;
+import java.util.List;
+
 public class CarDetailChooseColorFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private ListView car_color_listview;
+    private int[] color_resources = {
+            R.color.black,
+            R.color.white,
+            R.color.dark_grey,
+            R.color.grey,
+            R.color.burgundy,
+            R.color.red,
+            R.color.dark_blue,
+            R.color.blue,
+            R.color.dark_green,
+            R.color.green,
+            R.color.brown,
+            R.color.beige,
+            R.color.orange,
+            R.color.yellow,
+            R.color.purple,
+            R.color.pink
+    };
 
-    private OnFragmentInteractionListener mListener;
+    private String[] color_labels = {
+            "Black", "White", "Dark grey", "Grey", "Burgundy", "Red", "Dark blue", "Blue", "Dark green", "Green", "Brown", "Beige", "Orange", "Yellow", "Purple", "Pink"
+    };
 
-    public CarDetailChooseColorFragment() {
-        // Required empty public constructor
-    }
+    private List<CarColor> colorList = new ArrayList<>();
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment CarDetailChooseColorFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static CarDetailChooseColorFragment newInstance(String param1, String param2) {
-        CarDetailChooseColorFragment fragment = new CarDetailChooseColorFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
+    @Nullable
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_car_detail_choose_color, container, false);
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+
+        car_color_listview = view.findViewById(R.id.car_color_listview);
+
+        for(int i = 0; i < color_labels.length; i++) {
+            colorList.add(new CarColor(color_resources[i], color_labels[i]));
+        }
+        CarColorListAdapter adapter = new CarColorListAdapter(getContext(), 0, colorList);
+        car_color_listview.setAdapter(adapter);
+
+    }
+
+    class CarColorListAdapter extends ArrayAdapter<CarColor> {
+
+        private Context mContext;
+
+        CarColorListAdapter(Context context, int resource, List<CarColor> data) {
+            super(context, resource, data);
+            this.mContext = context;
+        }
+
+        @NonNull
+        @Override
+        public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+
+            if(convertView == null){
+                convertView = LayoutInflater.from(mContext).inflate(R.layout.car_color_item, parent, false);
+            }
+
+            CarColor color = getItem(position);
+            TextView car_color_view = convertView.findViewById(R.id.car_color_view);
+            TextView car_color_label = convertView.findViewById(R.id.car_color_label);
+            RadioButton car_color_check_btn = convertView.findViewById(R.id.car_color_check_btn);
+
+            assert color != null;
+
+            Drawable drawable = car_color_view.getBackground();
+            drawable = DrawableCompat.wrap(drawable);
+            DrawableCompat.setTint(drawable, mContext.getResources().getColor(color.color_resource));
+            car_color_view.setBackgroundDrawable(drawable);
+
+            car_color_label.setText(color.color_label);
+
+            convertView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    car_color_check_btn.setChecked(true);
+                    CarDetailRegisteredYearFragment registeredYearFragment = new CarDetailRegisteredYearFragment();
+                    getActivity().getSupportFragmentManager().beginTransaction()
+                            .replace(R.id.add_car_detail_frame, registeredYearFragment)
+                            .commit();
+                }
+            });
+
+            return convertView;
         }
     }
 
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
+    class CarColor {
+        int color_resource;
+        String color_label;
+
+        CarColor(int color_resource, String color_label) {
+            this.color_resource = color_resource;
+            this.color_label = color_label;
         }
     }
 
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
-    }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
-    }
 }

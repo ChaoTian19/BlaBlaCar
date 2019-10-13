@@ -28,9 +28,9 @@ public class VerifyPhoneNumberFragment extends Fragment {
 
     private ArrayAdapter adapterregion;
 
-    private String[] regionnumberitem = {"Ascension lsland (+247)","United Arab Emirates (+971)","Afghanistan (+93)","Antigua And Barbuda (+1)","Anguilla (+1)","Angola(+244)","American Samoa (+1)","Aruba (+297)","Aland lslands (+358)","Azerbaijan (+994)",
-            "Algerie (+213)","Andorra (+376)","Argentina (+54)","Australia (+61)","Barbados (+1)","Bangladesh (+880)","Burkina Faso(+226)","Bahrain (+973)","Burundi (+257)","Benin (+229)","Bermuda (+1)","Brunei (+673)","Bolivia (+591)",
-            "Caribbean Netherlands (+559)","Bahamas (+1)","Bhutan (+975)","Bo9tswana (+267)","Belize (+375)","Belgique(+32)","Bosnia / Herzegovina (+387)","Brasil (+55)","Bulgaria (359)","Cocos (keepling lslands (+61))"
+    private String[] regionnumberitem = {"Ascension lsland (+247)","United Arab Emirates (+971)","Afghanistan (+93)","Antigua And Barbuda (+car_type_1)","Anguilla (+car_type_1)","Angola(+244)","American Samoa (+car_type_1)","Aruba (+297)","Aland lslands (+358)","Azerbaijan (+994)",
+            "Algerie (+213)","Andorra (+376)","Argentina (+54)","Australia (+61)","Barbados (+car_type_1)","Bangladesh (+880)","Burkina Faso(+226)","Bahrain (+973)","Burundi (+257)","Benin (+229)","Bermuda (+car_type_1)","Brunei (+673)","Bolivia (+591)",
+            "Caribbean Netherlands (+559)","Bahamas (+car_type_1)","Bhutan (+975)","Bo9tswana (+267)","Belize (+375)","Belgique(+32)","Bosnia / Herzegovina (+387)","Brasil (+55)","Bulgaria (359)","Cocos (keepling lslands (+61))"
     };
 
     @Override
