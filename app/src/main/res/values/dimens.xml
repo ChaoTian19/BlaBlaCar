@@ -7,6 +7,8 @@
     <dimen name="selected_day_radius">27dip</dimen>
     <dimen name="calendar_height">270dip</dimen>
 
+    <dimen name="car_preference_img_width">25dp</dimen>
+    <dimen name="car_preference_img_height">25dp</dimen>
 
     <dimen name="abc_action_bar_content_inset_material">16dp</dimen>
     <dimen name="abc_action_bar_content_inset_with_nav">72dp</dimen>

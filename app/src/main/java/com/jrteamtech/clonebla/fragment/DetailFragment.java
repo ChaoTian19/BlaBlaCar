@@ -1,14 +1,16 @@
 package com.jrteamtech.clonebla.fragment;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -20,7 +22,6 @@ import com.jrteamtech.clonebla.R;
 import com.jrteamtech.clonebla.activity.AddCarActivity;
 import com.jrteamtech.clonebla.activity.AddPreferenceActivity;
 import com.jrteamtech.clonebla.activity.EditProfileActivity;
-import com.jrteamtech.clonebla.activity.SearchActivity;
 import com.jrteamtech.clonebla.activity.SeePublicProfileActivity;
 import com.jrteamtech.clonebla.activity.VerifyMyIdActivity;
 import com.jrteamtech.clonebla.activity.VerifyPhoneNumberActivity;
@@ -39,9 +40,16 @@ public class DetailFragment extends Fragment implements View.OnClickListener {
     private TextView tvVerifyEmail;
     private TextView tvVerifyID;
 
+    private LinearLayout preferences_view;
+
+    private SharedPreferences sharedPreferences;
+
+    private boolean isExistCarPreferences = false;
+
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         getArguments();
+        sharedPreferences = getContext().getSharedPreferences("CarPrefs", Context.MODE_PRIVATE);
     }
 
     public View onCreateView(@NonNull LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
@@ -50,6 +58,9 @@ public class DetailFragment extends Fragment implements View.OnClickListener {
 
     public void onViewCreated(@NonNull View view, @Nullable Bundle bundle) {
         super.onViewCreated(view, bundle);
+
+        this.preferences_view = view.findViewById(R.id.preferences_view);
+
         this.cardAboutYou = (CardView) view.findViewById(R.id.card_about_you);
         this.cardVerification = (CardView) view.findViewById(R.id.card_verification);
         this.cardCar = (CardView) view.findViewById(R.id.card_car);
@@ -63,16 +74,55 @@ public class DetailFragment extends Fragment implements View.OnClickListener {
         this.tvSeePublicProfile = (TextView) view.findViewById(R.id.tv_see_public_profile);
         this.imageVerification = (ImageView) view.findViewById(R.id.image_verification);
 
-
+        if(sharedPreferences.getBoolean("isExistCarPreferences", false)){
+            isExistCarPreferences = true;
+        } else {
+            isExistCarPreferences = false;
+        }
 
         this.tvMiniBio.setOnClickListener(this);
         this.tvAddPreference.setOnClickListener(this);
+        this.preferences_view.setOnClickListener(this);
         this.tvVerifyID.setOnClickListener(this);
         this.tvAddPhone.setOnClickListener(this);
         this.tvVerifyEmail.setOnClickListener(this);
         this.tvAddCar.setOnClickListener(this);
         this.tvSeePublicProfile.setOnClickListener(this);
         this.imageVerification.setOnClickListener(this);
+
+        showOrHidePreferences();
+    }
+
+    private void showOrHidePreferences() {
+        if(isExistCarPreferences){
+            preferences_view.setVisibility(View.VISIBLE);
+            tvAddPreference.setVisibility(View.GONE);
+            if(preferences_view.getChildCount() > 0) {
+                preferences_view.removeAllViews();
+            }
+
+            int chat_resource = sharedPreferences.getInt("chat_resource", 0);
+            int smoking_resource = sharedPreferences.getInt("smoking_resource", 0);
+            int music_resource = sharedPreferences.getInt("music_resource", 0);
+            int pet_resource = sharedPreferences.getInt("pet_resource", 0);
+            preferences_view.addView(getImageView(chat_resource));
+            preferences_view.addView(getImageView(smoking_resource));
+            preferences_view.addView(getImageView(music_resource));
+            preferences_view.addView(getImageView(pet_resource));
+        } else {
+            tvAddPreference.setVisibility(View.VISIBLE);
+            preferences_view.setVisibility(View.GONE);
+        }
+    }
+
+    private ImageView getImageView(int resource) {
+        ImageView imageView = new ImageView(getContext());
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(getResources().getDimensionPixelSize(R.dimen.car_preference_img_width), getResources().getDimensionPixelSize(R.dimen.car_preference_img_height));
+        params.setMarginEnd(20);
+        imageView.setLayoutParams(params);
+        imageView.setImageResource(resource);
+        imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+        return imageView;
     }
 
     private void getPopUpMenu() {
@@ -134,9 +184,12 @@ public class DetailFragment extends Fragment implements View.OnClickListener {
             case R.id.tv_mini_bio /*2131231092*/:
                 addUserBio();
                 return;
-            case R.id.tv_add_preference         :
+            case R.id.tv_add_preference:
                  addpreference();
                  return;
+            case R.id.preferences_view:
+                addpreference();
+                return;
             case  R.id.tv_verify_id:
                   addverifymyid();
                   return;
@@ -152,5 +205,16 @@ public class DetailFragment extends Fragment implements View.OnClickListener {
             default:
                 return;
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if(sharedPreferences.getBoolean("isExistCarPreferences", false)){
+            isExistCarPreferences = true;
+        } else {
+            isExistCarPreferences = false;
+        }
+        showOrHidePreferences();
     }
 }

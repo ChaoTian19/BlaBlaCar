@@ -22,17 +22,17 @@
         >
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/chattiness"
+            android:id="@+id/chat_img"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/chat_1"
             android:layout_gravity="center"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginStart="10dp"
-            android:layout_marginLeft="10dp"
+            android:layout_marginStart="20dp"
             >
 
             <TextView
@@ -59,17 +59,17 @@
      >
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/smoking"
+            android:id="@+id/smoking_img"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/smoking_1"
             android:layout_gravity="center"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginStart="10dp"
-            android:layout_marginLeft="10dp">
+            android:layout_marginStart="20dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -95,17 +95,17 @@
       >
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/music"
+            android:id="@+id/music_img"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/music_1"
             android:layout_gravity="center"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginStart="10dp"
-            android:layout_marginLeft="10dp">
+            android:layout_marginStart="20dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -132,17 +132,17 @@
        >
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/pets"
+            android:id="@+id/pet_img"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/pets_1"
             android:layout_gravity="center"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginStart="10dp"
-            android:layout_marginLeft="10dp">
+            android:layout_marginStart="20dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -162,12 +162,12 @@
 
 
     <Button
+        android:id="@+id/save_preferences"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/background_primary"
         android:text="Save preferences"
         android:textColor="@color/white"
-        android:id="@+id/savepreferences"
         android:layout_marginTop="@dimen/dimen_32dp"
         android:layout_marginLeft="@dimen/dimen_16dp"
         android:layout_marginRight="@dimen/dimen_16dp"/>

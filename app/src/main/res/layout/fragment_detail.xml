@@ -39,17 +39,33 @@
                     android:text="@string/label_mini_bio"
                     android:paddingStart="@dimen/dimen_32dp"
                     android:paddingEnd="@dimen/dimen_32dp" />
+
+                <LinearLayout
+                    android:id="@+id/preferences_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:visibility="gone"
+                    android:paddingStart="@dimen/dimen_18dp"
+                    android:paddingEnd="@dimen/dimen_8dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:clickable="true"
+                    android:focusable="true" />
                 <TextView
+                    android:id="@+id/tv_add_preference"
                     android:textSize="@dimen/text_size_16sp"
                     android:textColor="@color/colorPrimary"
-                    android:id="@+id/tv_add_preference"
                     android:padding="@dimen/dimen_8dp"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dimen_12dp"
                     android:text="@string/label_add_preference"
                     android:paddingStart="@dimen/dimen_32dp"
-                    android:paddingEnd="@dimen/dimen_32dp" />
+                    android:paddingEnd="@dimen/dimen_32dp"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:visibility="visible"/>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView
