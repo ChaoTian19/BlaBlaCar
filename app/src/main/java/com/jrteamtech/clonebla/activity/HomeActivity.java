@@ -2,6 +2,7 @@ package com.jrteamtech.clonebla.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
 
@@ -27,6 +28,7 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
     String logIn;
     String signUp;
     private Toolbar toolbar;
+    public static Menu bottom_menu;
 
     public HomeActivity() {
         String str = "";
@@ -49,6 +51,7 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
     private void initID() {
         this.frameContainer = (FrameLayout) findViewById(R.id.frame_container);
         this.bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
+        bottom_menu = this.bottomNavigationView.getMenu();
     }
 
     private void setToolbar() {

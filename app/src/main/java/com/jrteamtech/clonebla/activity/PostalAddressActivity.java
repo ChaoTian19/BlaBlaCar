@@ -1,7 +1,10 @@
 package com.jrteamtech.clonebla.activity;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.MenuItem;
+import android.widget.ProgressBar;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +14,8 @@ import com.jrteamtech.clonebla.R;
 
 public class PostalAddressActivity  extends AppCompatActivity {
 
+    ProgressDialog progressDialog;
+
     private Toolbar toolbar;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -18,6 +23,25 @@ public class PostalAddressActivity  extends AppCompatActivity {
         setContentView(R.layout.activity_postal_address);
 
         setToolbar();
+
+        showdialog();
+    }
+
+    private void showdialog(){
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setCancelable(false);
+        progressDialog.setMessage("Loading...");
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progressDialog.show();
+
+        Runnable progressRunnable = new Runnable() {
+            @Override
+            public void run() {
+                progressDialog.cancel();
+            }
+        };
+        Handler pdCanceller = new Handler();
+        pdCanceller.postDelayed(progressRunnable, 800);
     }
 
     private void setToolbar(){

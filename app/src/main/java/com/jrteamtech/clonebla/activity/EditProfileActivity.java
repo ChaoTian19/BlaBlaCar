@@ -1,18 +1,22 @@
 package com.jrteamtech.clonebla.activity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import androidx.appcompat.widget.Toolbar;
 
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.swiperefreshlayout.widget.CircularProgressDrawable;
 
 import com.jrteamtech.clonebla.R;
 
@@ -21,7 +25,7 @@ public class EditProfileActivity extends AppCompatActivity {
     private TextView chooseprofile ;
     private ImageView choosephoto;
     private Button  saveprofile, saveemail,savemobile;
-
+    private ProgressDialog progressDialog;
     private Toolbar toolbar;
     private Spinner spinneryearofbirth;
     private String[] spinneryearofbirthitem={ "2010", "2009" ,"2008", "2007", "2006", "2005", "2004" ,"2003" ,"2002" ,"2001", "2000", "1999", "1998", "1997",
@@ -65,7 +69,27 @@ public class EditProfileActivity extends AppCompatActivity {
 
         setyear();
         setToolbar();
+        showdialog();
+
     }
+
+    private void showdialog(){
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Loading...");
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progressDialog.show();
+
+        Runnable progressRunnable = new Runnable() {
+            @Override
+            public void run() {
+                progressDialog.cancel();
+            }
+        };
+        Handler pdCanceller = new Handler();
+        pdCanceller.postDelayed(progressRunnable, 800);
+    }
+
+
     private void setyear(){
         this.yearadapter = new ArrayAdapter<>(EditProfileActivity.this, android.R.layout.simple_list_item_1, this.spinneryearofbirthitem);
         this.yearadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

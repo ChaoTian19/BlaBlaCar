@@ -1,9 +1,13 @@
 package com.jrteamtech.clonebla.activity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,7 +21,10 @@ import com.jrteamtech.clonebla.fragment.ProfileFragment;
 
 public class NotificationCommunicationActivity extends AppCompatActivity {
 
-    private ImageView beforebtn, pushnotificationsbtn,emailbtn,messagingtitlebtn;
+    private ImageView  pushnotificationsbtn,emailbtn,messagingtitlebtn;
+    private ImageButton beforebtn;
+
+    ProgressDialog progressDialog;
 
 
     @Override
@@ -47,6 +54,7 @@ public class NotificationCommunicationActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(NotificationCommunicationActivity.this,PushNotificationsActivity.class));
+
             }
         });
 
@@ -54,6 +62,7 @@ public class NotificationCommunicationActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                  startActivity(new Intent(NotificationCommunicationActivity.this,MessagingTitleActivity.class));
+
             }
         });
 
@@ -61,10 +70,29 @@ public class NotificationCommunicationActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(NotificationCommunicationActivity.this,EmailPushnotificationActivity.class));
+
             }
         });
 
-
+      showdialog();
 
     }
+
+
+    private void showdialog(){
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Loading...");
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progressDialog.show();
+
+        Runnable progressRunnable = new Runnable() {
+            @Override
+            public void run() {
+                progressDialog.cancel();
+            }
+        };
+        Handler pdCanceller = new Handler();
+        pdCanceller.postDelayed(progressRunnable, 800);
+    }
+
 }

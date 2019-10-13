@@ -4,6 +4,7 @@ import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -25,7 +26,8 @@ public class SelectTimeActivity extends AppCompatActivity implements View.OnClic
 
 
     private String changetime = "08:00";
-    private ImageView leftnav,rightnav;
+    private ImageView rightnav;
+    private ImageButton leftnav;
     private TextView  timeimage,calendardate;
     private TextView lblDate;
     private TextView lblTime;
@@ -44,7 +46,7 @@ public class SelectTimeActivity extends AppCompatActivity implements View.OnClic
 
         timeimage = (TextView) findViewById(R.id.timecalculate);
         calendardate = (TextView) findViewById(R.id.calendardate);
-        leftnav   = (ImageView)findViewById(R.id.leftnav);
+        leftnav   = (ImageButton) findViewById(R.id.leftnav);
         rightnav  = (ImageView)findViewById(R.id.rightnav);
         calendar = Calendar.getInstance();
         timeFormat = new SimpleDateFormat(TIME_PATTERN, Locale.getDefault());

@@ -18,6 +18,8 @@ public class EditPriceActivity extends AppCompatActivity implements View.OnClick
     TextView price_view;
     TextView confirm_btn;
 
+    private int aa=192;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,8 +46,12 @@ public class EditPriceActivity extends AppCompatActivity implements View.OnClick
                 finish();
                 break;
             case R.id.minus_counter_btn:
+                aa--;
+               price_view.setText("$"+aa);
                 break;
             case R.id.plus_counter_btn:
+                aa++;
+                price_view.setText("$"+aa);
                 break;
             case R.id.confirm_btn:
                 startActivity(new Intent(EditPriceActivity.this, PublishReturnTripActivity.class));

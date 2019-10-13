@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -15,7 +16,7 @@ import com.jrteamtech.clonebla.R;
 public class NoRideFindActivity extends AppCompatActivity implements View.OnClickListener{
 
 
-    private ImageView leftarrow;
+    private ImageButton leftarrow;
     private Button  createbutton;
     private TextView calendardate;
 
@@ -26,7 +27,7 @@ public class NoRideFindActivity extends AppCompatActivity implements View.OnClic
         setContentView(R.layout.activity_no_ride_find);
 
 
-        leftarrow = (ImageView) findViewById(R.id.leftnav);
+        leftarrow = (ImageButton) findViewById(R.id.beforebtn);
         createbutton = (Button) findViewById(R.id.tv_createride);
         calendardate = (TextView) findViewById(R.id.calendardate);
 
