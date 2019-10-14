@@ -51,6 +51,7 @@
             android:background="@android:color/transparent"
             android:padding="@dimen/dimen_12dp"
             android:hint="Station Road or The Bridge Cafe..."
+            android:inputType="textAutoComplete"
             android:layout_toEndOf="@+id/filter_layout"
             android:layout_toStartOf="@+id/search_cancel_btn"/>
 

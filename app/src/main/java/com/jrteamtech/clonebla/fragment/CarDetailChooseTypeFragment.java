@@ -70,6 +70,8 @@ public class CarDetailChooseTypeFragment extends Fragment implements View.OnClic
             carTypes.add(new CarType(car_img_resources[i], car_img_lables[i]));
         }
 
+
+
         CarTypeListAdapter adapter = new CarTypeListAdapter(getContext(), 0, carTypes);
         car_type_listview.setAdapter(adapter);
     }
@@ -143,6 +145,18 @@ public class CarDetailChooseTypeFragment extends Fragment implements View.OnClic
                         b.putSerializable("car_info", (Serializable)carInfo);
                         b.putString("edit_flag", edit_flag);
                         colorFragment.setArguments(b);
+                        getActivity().getSupportFragmentManager().beginTransaction()
+                                .replace(R.id.add_car_detail_frame, colorFragment)
+                                .commit();
+                    }
+                }
+            });
+
+            car_type_check_btn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if(isChecked){
+                        CarDetailChooseColorFragment colorFragment = new CarDetailChooseColorFragment();
                         getActivity().getSupportFragmentManager().beginTransaction()
                                 .replace(R.id.add_car_detail_frame, colorFragment)
                                 .commit();

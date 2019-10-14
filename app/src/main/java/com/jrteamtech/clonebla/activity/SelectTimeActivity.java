@@ -11,6 +11,7 @@ import android.widget.TimePicker;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.jrteamtech.clonebla.utility.Global;
 import com.jrteamtech.clonebla.R;
 
@@ -26,7 +27,7 @@ public class SelectTimeActivity extends AppCompatActivity implements View.OnClic
 
 
     private String changetime = "08:00";
-    private ImageView rightnav;
+    private FloatingActionButton rightnav;
     private ImageButton leftnav;
     private TextView  timeimage,calendardate;
     private TextView lblDate;
@@ -47,7 +48,7 @@ public class SelectTimeActivity extends AppCompatActivity implements View.OnClic
         timeimage = (TextView) findViewById(R.id.timecalculate);
         calendardate = (TextView) findViewById(R.id.calendardate);
         leftnav   = (ImageButton) findViewById(R.id.leftnav);
-        rightnav  = (ImageView)findViewById(R.id.rightnav);
+        rightnav  = (FloatingActionButton) findViewById(R.id.rightnav);
         calendar = Calendar.getInstance();
         timeFormat = new SimpleDateFormat(TIME_PATTERN, Locale.getDefault());
 
@@ -67,7 +68,7 @@ public class SelectTimeActivity extends AppCompatActivity implements View.OnClic
         }else if(id == R.id.rightnav){
 
             //  changetime = timeFormat.format(calendar.getTime());
-            Global.setSelected_time(Global.getSelected_time() + " " + changetime);
+          Global.setSelected_time(Global.getSelected_time() + " " + changetime);
 
             if(activity_name.equals(StopOversActivity.class.getSimpleName())){
                 startActivity(new Intent(SelectTimeActivity.this, ThinkComfortActivity.class));

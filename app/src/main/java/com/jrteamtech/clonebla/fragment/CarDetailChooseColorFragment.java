@@ -175,6 +175,18 @@ public class CarDetailChooseColorFragment extends Fragment implements View.OnCli
                 }
             });
 
+            car_color_check_btn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if(isChecked){
+                        CarDetailRegisteredYearFragment registeredYearFragment = new CarDetailRegisteredYearFragment();
+                        getActivity().getSupportFragmentManager().beginTransaction()
+                                .replace(R.id.add_car_detail_frame, registeredYearFragment)
+                                .commit();
+                    }
+                }
+            });
+
             return convertView;
         }
     }

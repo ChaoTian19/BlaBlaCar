@@ -56,12 +56,18 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
     public void onClick(View view) {
         int id = view.getId();
         if (id == R.id.tv_going_to) {
-            startActivity(new Intent(getContext(), SearchActivity.class));
+            Intent intent = new Intent(getContext(), SearchActivity.class);
+            intent.putExtra(getContext().getResources().getString(R.string.activity_name), SearchFragment.class.getSimpleName());
+            startActivity(intent);
         } else if (id == R.id.tv_leaving_from) {
-            startActivity(new Intent(getContext(), SearchActivity.class));
+            Intent intent = new Intent(getContext(), SearchActivity.class);
+            intent.putExtra(getContext().getResources().getString(R.string.activity_name), SearchFragment.class.getSimpleName());
+            startActivity(intent);
         } else if (id == R.id.calendardate) {
          //   startActivity(new Intent(getContext(), NoRideFindActivity.class));
-             startActivity(new Intent(getContext(), ChooseDateActivity.class));
+            Intent intent = new Intent(getContext(), ChooseDateActivity.class);
+            intent.putExtra(getContext().getResources().getString(R.string.activity_name), SearchFragment.class.getSimpleName());
+            startActivity(intent);
         } else if (id == R.id.tv_search)
         {
             startActivity(new Intent(getContext(), NoRideFindActivity.class));

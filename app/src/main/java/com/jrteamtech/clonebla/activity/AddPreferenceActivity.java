@@ -34,6 +34,7 @@ public class AddPreferenceActivity extends AppCompatActivity implements View.OnC
     int chat_index, smoking_index, music_index, pet_index;
 
 
+
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
 
@@ -51,6 +52,7 @@ public class AddPreferenceActivity extends AppCompatActivity implements View.OnC
         this.smoking_img = findViewById(R.id.smoking_img);
         this.music_img = findViewById(R.id.music_img);
         this.pet_img = findViewById(R.id.pet_img);
+
 
         this.save_preferences_btn = findViewById(R.id.save_preferences);
         this.save_preferences_btn.setOnClickListener(this);
