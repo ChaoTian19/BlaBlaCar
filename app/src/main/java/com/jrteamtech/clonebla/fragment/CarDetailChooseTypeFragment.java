@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RadioButton;
@@ -41,6 +42,8 @@ public class CarDetailChooseTypeFragment extends Fragment {
         for (int i = 0; i < 8; i++){
             carTypes.add(new CarType(car_img_resources[i], car_img_lables[i]));
         }
+
+
 
         CarTypeListAdapter adapter = new CarTypeListAdapter(getContext(), 0, carTypes);
         car_type_listview.setAdapter(adapter);
@@ -80,6 +83,18 @@ public class CarDetailChooseTypeFragment extends Fragment {
                     getActivity().getSupportFragmentManager().beginTransaction()
                             .replace(R.id.add_car_detail_frame, colorFragment)
                             .commit();
+                }
+            });
+
+            car_type_check_btn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if(isChecked){
+                        CarDetailChooseColorFragment colorFragment = new CarDetailChooseColorFragment();
+                        getActivity().getSupportFragmentManager().beginTransaction()
+                                .replace(R.id.add_car_detail_frame, colorFragment)
+                                .commit();
+                    }
                 }
             });
 

@@ -28,6 +28,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.jrteamtech.clonebla.R;
 import com.jrteamtech.clonebla.adapter.SearchHistoryAdapter;
+import com.jrteamtech.clonebla.fragment.SearchFragment;
 import com.jrteamtech.clonebla.utility.Global;
 
 import java.util.ArrayList;
@@ -104,8 +105,8 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
                     startActivity(new Intent(SearchActivity.this, DropOffActivity.class));
                 } else if(activity_name.equals(DropOffActivity.class.getSimpleName())){
                     startActivity(new Intent(SearchActivity.this, StopOversActivity.class));
-                } else {
-
+                } else if(activity_name.equals(SearchFragment.class.getSimpleName())) {
+                    startActivity(new Intent(SearchActivity.this, DropOffActivity.class));
                 }
                 break;
         }

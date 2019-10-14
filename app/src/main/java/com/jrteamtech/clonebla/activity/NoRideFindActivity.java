@@ -42,7 +42,7 @@ public class NoRideFindActivity extends AppCompatActivity implements View.OnClic
     @Override
     public void onClick(View view) {
         int id = view.getId();
-        if (id == R.id.leftnav){
+        if (id == R.id.beforebtn){
            finish();
         }else if(id == R.id.tv_createride){
             Intent intent = new Intent(NoRideFindActivity.this,EmailActivity.class);
