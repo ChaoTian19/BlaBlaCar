@@ -79,6 +79,9 @@
             android:name=".activity.ChooseProfilePhotoActivity"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".activity.ChooseCarPhotoActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".activity.AddPreferenceActivity"
             android:screenOrientation="portrait" />
         <activity

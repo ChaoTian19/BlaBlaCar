@@ -4,6 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <include
+        android:id="@+id/layout_toolbar"
+        layout="@layout/toolbar"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -24,19 +28,33 @@
             android:text="Passengers like to know if your car is modern or something a bit more vintage."/>
 
 
-        <EditText
-            android:layout_marginTop="@dimen/dimen_80dp"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/input_layout"
             android:layout_width="match_parent"
-            android:hint="Enter year(YYYY)"
             android:layout_height="wrap_content"
-            android:id="@+id/enteryear"/>
-        <Button
+            android:hint="Enter year(YYYY)"
+            android:layout_marginTop="@dimen/dimen_80dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_year"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textColor="@android:color/black"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/submit_btn"
             android:layout_marginTop="@dimen/dimen_16dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/background_primary"
+            android:layout_height="40dp"
+            android:background="@drawable/login_btn_background"
             android:text="Sumbit"
-            android:textColor="@color/white"/>
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:gravity="center" />
     </LinearLayout>
 
 </LinearLayout>

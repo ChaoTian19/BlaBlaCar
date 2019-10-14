@@ -1,6 +1,8 @@
 package com.jrteamtech.clonebla.fragment;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -8,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -15,34 +18,44 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.PopupMenu;
-import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.jrteamtech.clonebla.R;
 import com.jrteamtech.clonebla.activity.AddCarActivity;
 import com.jrteamtech.clonebla.activity.AddPreferenceActivity;
+import com.jrteamtech.clonebla.activity.ChooseCarPhotoActivity;
 import com.jrteamtech.clonebla.activity.EditProfileActivity;
 import com.jrteamtech.clonebla.activity.SeePublicProfileActivity;
 import com.jrteamtech.clonebla.activity.VerifyMyIdActivity;
 import com.jrteamtech.clonebla.activity.VerifyPhoneNumberActivity;
+import com.jrteamtech.clonebla.adapter.CarInfoAdapter;
+import com.jrteamtech.clonebla.database.DBHelper;
+import com.jrteamtech.clonebla.database.model.CarInfo;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DetailFragment extends Fragment implements View.OnClickListener {
-    private CardView cardAboutYou;
-    private CardView cardCar;
-    private CardView cardSeePublicProfile;
-    private CardView cardVerification;
     private ImageView imageVerification;
     private TextView tvAddCar;
+    private Button btnAddCar;
     private TextView tvAddPhone;
     private TextView tvAddPreference;
     private TextView tvMiniBio;
     private TextView tvSeePublicProfile;
     private TextView tvVerifyEmail;
     private TextView tvVerifyID;
+    private RecyclerView rvCarInfoRecyclerView;
+    private CarInfoAdapter carInfoAdapter;
 
     private LinearLayout preferences_view;
 
     private SharedPreferences sharedPreferences;
+    private DBHelper dbHelper;
+    private List<CarInfo> carInfoList = new ArrayList<>();
 
     private boolean isExistCarPreferences = false;
 
@@ -50,6 +63,7 @@ public class DetailFragment extends Fragment implements View.OnClickListener {
         super.onCreate(bundle);
         getArguments();
         sharedPreferences = getContext().getSharedPreferences("CarPrefs", Context.MODE_PRIVATE);
+        dbHelper = new DBHelper(getContext());
     }
 
     public View onCreateView(@NonNull LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
@@ -60,19 +74,16 @@ public class DetailFragment extends Fragment implements View.OnClickListener {
         super.onViewCreated(view, bundle);
 
         this.preferences_view = view.findViewById(R.id.preferences_view);
-
-        this.cardAboutYou = (CardView) view.findViewById(R.id.card_about_you);
-        this.cardVerification = (CardView) view.findViewById(R.id.card_verification);
-        this.cardCar = (CardView) view.findViewById(R.id.card_car);
-        this.cardSeePublicProfile = (CardView) view.findViewById(R.id.card_see_public_profile);
-        this.tvMiniBio = (TextView) view.findViewById(R.id.tv_mini_bio);
-        this.tvAddPreference = (TextView) view.findViewById(R.id.tv_add_preference);
-        this.tvVerifyID = (TextView) view.findViewById(R.id.tv_verify_id);
-        this.tvAddPhone = (TextView) view.findViewById(R.id.tv_add_phone);
-        this.tvVerifyEmail = (TextView) view.findViewById(R.id.tv_verify_email);
-        this.tvAddCar = (TextView) view.findViewById(R.id.tv_add_car);
-        this.tvSeePublicProfile = (TextView) view.findViewById(R.id.tv_see_public_profile);
-        this.imageVerification = (ImageView) view.findViewById(R.id.image_verification);
+        this.tvMiniBio = view.findViewById(R.id.tv_mini_bio);
+        this.tvAddPreference = view.findViewById(R.id.tv_add_preference);
+        this.tvVerifyID = view.findViewById(R.id.tv_verify_id);
+        this.tvAddPhone = view.findViewById(R.id.tv_add_phone);
+        this.tvVerifyEmail = view.findViewById(R.id.tv_verify_email);
+        this.tvAddCar = view.findViewById(R.id.tv_add_car);
+        this.btnAddCar = view.findViewById(R.id.add_car_btn);
+        this.tvSeePublicProfile = view.findViewById(R.id.tv_see_public_profile);
+        this.imageVerification = view.findViewById(R.id.image_verification);
+        this.rvCarInfoRecyclerView = view.findViewById(R.id.car_info_recyclerview);
 
         if(sharedPreferences.getBoolean("isExistCarPreferences", false)){
             isExistCarPreferences = true;
@@ -87,10 +98,76 @@ public class DetailFragment extends Fragment implements View.OnClickListener {
         this.tvAddPhone.setOnClickListener(this);
         this.tvVerifyEmail.setOnClickListener(this);
         this.tvAddCar.setOnClickListener(this);
+        this.btnAddCar.setOnClickListener(this);
         this.tvSeePublicProfile.setOnClickListener(this);
         this.imageVerification.setOnClickListener(this);
 
         showOrHidePreferences();
+    }
+
+    private void showCarInfoList() {
+        carInfoList = dbHelper.getAllCarInfos();
+        if(carInfoList.size() == 0){
+            this.tvAddCar.setVisibility(View.VISIBLE);
+            this.btnAddCar.setVisibility(View.GONE);
+            this.rvCarInfoRecyclerView.setVisibility(View.GONE);
+        } else {
+            this.tvAddCar.setVisibility(View.GONE);
+            this.btnAddCar.setVisibility(View.VISIBLE);
+            this.rvCarInfoRecyclerView.setVisibility(View.VISIBLE);
+            this.carInfoAdapter = new CarInfoAdapter(getContext(), carInfoList);
+            this.carInfoAdapter.setItemClickListener(new CarInfoAdapter.ItemClickListener() {
+                @Override
+                public void onItemClick(View view, int position) {
+                    Intent intent = new Intent(getContext(), AddCarActivity.class);
+                    intent.putExtra("car_info", (Serializable)carInfoList.get(position));
+                    intent.putExtra("edit_flag", "edit");
+                    startActivity(intent);
+                }
+            });
+
+            this.carInfoAdapter.setItemMenuClickListener(new CarInfoAdapter.ItemMenuClickListener() {
+                @Override
+                public void onItemMenuClick(View view, int position, String type) {
+                    if(type.equals(carInfoAdapter.CHANGE_PHOTO)){
+                        startActivity(new Intent(getContext(), ChooseCarPhotoActivity.class));
+                    } else if(type.equals(carInfoAdapter.EDIT)){
+                        Intent intent = new Intent(getContext(), AddCarActivity.class);
+                        intent.putExtra("car_info", (Serializable)carInfoList.get(position));
+                        intent.putExtra("edit_flag", "edit");
+                        startActivity(intent);
+                    } else {
+                        new AlertDialog.Builder(getContext())
+                                .setTitle("Delete this car")
+                                .setMessage("Are you sure you want to delete this car?")
+                                .setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        dialog.dismiss();
+                                    }
+                                })
+                                .setPositiveButton("CONFIRM", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        dbHelper.deleteCarInfo(carInfoList.get(position));
+                                        carInfoList.remove(position);
+                                        carInfoAdapter.notifyItemChanged(position);
+                                        if(carInfoList.size() == 0){
+                                            tvAddCar.setVisibility(View.VISIBLE);
+                                            btnAddCar.setVisibility(View.GONE);
+                                            rvCarInfoRecyclerView.setVisibility(View.GONE);
+                                        }
+                                    }
+                                })
+                                .show();
+                    }
+                }
+            });
+
+            this.rvCarInfoRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+            this.rvCarInfoRecyclerView.setAdapter(this.carInfoAdapter);
+            this.carInfoAdapter.notifyDataSetChanged();
+        }
     }
 
     private void showOrHidePreferences() {
@@ -153,13 +230,13 @@ public class DetailFragment extends Fragment implements View.OnClickListener {
     }
 
     private void addACar() {
-        startActivity(new Intent(getContext(), AddCarActivity.class));
+        Intent intent = new Intent(getContext(), AddCarActivity.class);
+        intent.putExtra("edit_flag", "new");
+        startActivity(intent);
     }
 
     private void addverifymyid(){
         startActivity(new Intent(getContext(), VerifyMyIdActivity.class));
-
-
     }
 
     private void addverifyphone(){
@@ -179,6 +256,9 @@ public class DetailFragment extends Fragment implements View.OnClickListener {
                 getPopUpMenu();
                 return;
             case R.id.tv_add_car /*2131231072*/:
+                addACar();
+                return;
+            case R.id.add_car_btn:
                 addACar();
                 return;
             case R.id.tv_mini_bio /*2131231092*/:
@@ -216,5 +296,6 @@ public class DetailFragment extends Fragment implements View.OnClickListener {
             isExistCarPreferences = false;
         }
         showOrHidePreferences();
+        showCarInfoList();
     }
 }

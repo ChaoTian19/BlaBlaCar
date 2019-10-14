@@ -4,26 +4,36 @@ import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.CompoundButton;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.fragment.app.Fragment;
 
 import com.jrteamtech.clonebla.R;
+import com.jrteamtech.clonebla.activity.AddCarActivity;
+import com.jrteamtech.clonebla.database.model.CarInfo;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CarDetailChooseColorFragment extends Fragment {
+public class CarDetailChooseColorFragment extends Fragment implements View.OnClickListener {
 
+    private Toolbar toolbar;
+    ActionBar actionBar;
     private ListView car_color_listview;
+    private TextView continueBtn;
     private int[] color_resources = {
             R.color.black,
             R.color.white,
@@ -49,9 +59,15 @@ public class CarDetailChooseColorFragment extends Fragment {
 
     private List<CarColor> colorList = new ArrayList<>();
 
+    CarInfo carInfo;
+    String edit_flag;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        carInfo = (CarInfo) getArguments().getSerializable("car_info");
+        edit_flag = getArguments().getString("edit_flag");
+        setHasOptionsMenu(true);
         return inflater.inflate(R.layout.fragment_car_detail_choose_color, container, false);
     }
 
@@ -59,12 +75,31 @@ public class CarDetailChooseColorFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
         car_color_listview = view.findViewById(R.id.car_color_listview);
+        continueBtn = view.findViewById(R.id.continue_btn);
+
+        toolbar = view.findViewById(R.id.toolbar);
+        setToolbar();
+
+        if(carInfo.getColor_label() != null && !carInfo.getColor_label().trim().isEmpty()){
+            continueBtn.setVisibility(View.VISIBLE);
+        }
+
+        continueBtn.setOnClickListener(this);
 
         for(int i = 0; i < color_labels.length; i++) {
             colorList.add(new CarColor(color_resources[i], color_labels[i]));
         }
         CarColorListAdapter adapter = new CarColorListAdapter(getContext(), 0, colorList);
         car_color_listview.setAdapter(adapter);
+
+    }
+
+    private void setToolbar(){
+        ((AddCarActivity)getActivity()).setSupportActionBar(this.toolbar);
+        actionBar = ((AddCarActivity)getActivity()).getSupportActionBar();
+        actionBar.setTitle("Your car details");
+        toolbar.setTitleTextColor(getResources().getColor(android.R.color.white));
+        actionBar.setDisplayHomeAsUpEnabled(true);
 
     }
 
@@ -99,14 +134,44 @@ public class CarDetailChooseColorFragment extends Fragment {
 
             car_color_label.setText(color.color_label);
 
+            if(carInfo.getColor_label() != null && carInfo.getColor_label().equals(color.color_label)){
+                car_color_check_btn.setChecked(true);
+            }
+
             convertView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    car_color_check_btn.setChecked(true);
-                    CarDetailRegisteredYearFragment registeredYearFragment = new CarDetailRegisteredYearFragment();
-                    getActivity().getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.add_car_detail_frame, registeredYearFragment)
-                            .commit();
+                    if(!car_color_check_btn.isChecked()){
+                        car_color_check_btn.setChecked(true);
+                        carInfo.setColor_label(color.color_label);
+                        carInfo.setColor_value(color.color_resource);
+                        CarDetailRegisteredYearFragment registeredYearFragment = new CarDetailRegisteredYearFragment();
+                        Bundle b = new Bundle();
+                        b.putSerializable("car_info", (Serializable)carInfo);
+                        b.putString("edit_flag", edit_flag);
+                        registeredYearFragment.setArguments(b);
+                        getActivity().getSupportFragmentManager().beginTransaction()
+                                .replace(R.id.add_car_detail_frame, registeredYearFragment)
+                                .commit();
+                    }
+                }
+            });
+
+            car_color_check_btn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if(isChecked){
+                        carInfo.setColor_label(color.color_label);
+                        carInfo.setColor_value(color.color_resource);
+                        CarDetailRegisteredYearFragment registeredYearFragment = new CarDetailRegisteredYearFragment();
+                        Bundle b = new Bundle();
+                        b.putSerializable("car_info", (Serializable)carInfo);
+                        b.putString("edit_flag", edit_flag);
+                        registeredYearFragment.setArguments(b);
+                        getActivity().getSupportFragmentManager().beginTransaction()
+                                .replace(R.id.add_car_detail_frame, registeredYearFragment)
+                                .commit();
+                    }
                 }
             });
 
@@ -124,5 +189,35 @@ public class CarDetailChooseColorFragment extends Fragment {
         }
     }
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.continue_btn:
+                CarDetailRegisteredYearFragment registeredYearFragment = new CarDetailRegisteredYearFragment();
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("car_info", (Serializable)carInfo);
+                bundle.putString("edit_flag", edit_flag);
+                registeredYearFragment.setArguments(bundle);
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.add_car_detail_frame, registeredYearFragment)
+                        .commit();
+                break;
+        }
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId() == android.R.id.home){
+            CarDetailChooseTypeFragment chooseTypeFragment = new CarDetailChooseTypeFragment();
+            Bundle b = new Bundle();
+            b.putSerializable("car_info", (Serializable)carInfo);
+            b.putString("edit_flag", edit_flag);
+            chooseTypeFragment.setArguments(b);
+            getActivity().getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.add_car_detail_frame, chooseTypeFragment)
+                    .commit();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }

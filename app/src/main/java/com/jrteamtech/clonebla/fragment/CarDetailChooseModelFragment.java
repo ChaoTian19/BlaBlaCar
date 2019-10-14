@@ -3,26 +3,41 @@ package com.jrteamtech.clonebla.fragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import com.jrteamtech.clonebla.R;
+import com.jrteamtech.clonebla.activity.AddCarActivity;
+import com.jrteamtech.clonebla.database.model.CarInfo;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class CarDetailChooseModelFragment extends Fragment {
+public class CarDetailChooseModelFragment extends Fragment implements View.OnClickListener {
 
+    private Toolbar toolbar;
+    ActionBar actionBar;
     private TextView question_view, popular_title_view;
     private ListView popular_listview;
+    private TextInputLayout textInputLayout;
+    private TextInputEditText textInputEditText;
+    private LinearLayout car_model_list_layout;
+    private TextView continueBtn;
 
     private List<String> popular_makes = new ArrayList<>();
     private List<String> volk_models = new ArrayList<>();
@@ -32,11 +47,18 @@ public class CarDetailChooseModelFragment extends Fragment {
     private List<String> audi_models = new ArrayList<>();
     private List<List<String>> models = new ArrayList<>();
 
-    private String flag = "makes";
+    private String flag;
+
+    CarInfo carInfo;
+    String edit_flag;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        carInfo = (CarInfo) getArguments().getSerializable("car_info");
+        edit_flag = getArguments().getString("edit_flag");
+        flag = getArguments().getString("flag");
+        setHasOptionsMenu(true);
         return inflater.inflate(R.layout.fragment_car_detail_choose_model, container, false);
     }
 
@@ -44,6 +66,16 @@ public class CarDetailChooseModelFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         question_view = view.findViewById(R.id.question_view);
         popular_title_view = view.findViewById(R.id.popular_title_view);
+        textInputLayout = view.findViewById(R.id.input_layout);
+        textInputEditText = view.findViewById(R.id.et_search);
+        car_model_list_layout = view.findViewById(R.id.car_model_list_layout);
+        continueBtn = view.findViewById(R.id.continue_btn);
+
+        toolbar = view.findViewById(R.id.toolbar);
+        setToolbar();
+
+        textInputLayout.setOnClickListener(this);
+        continueBtn.setOnClickListener(this);
 
         popular_makes = Arrays.asList(getResources().getStringArray(R.array.popular_makes));
         volk_models = Arrays.asList(getResources().getStringArray(R.array.VOLKSWAGEN));
@@ -58,9 +90,44 @@ public class CarDetailChooseModelFragment extends Fragment {
         models.add(vaux_models);
         models.add(audi_models);
 
+        if(flag.equals("model")){
+            question_view.setText("What model?");
+            if(carInfo.getModel() == null) {
+                popular_title_view.setText("Popular models");
+                car_model_list_layout.setVisibility(View.VISIBLE);
+                continueBtn.setVisibility(View.GONE);
+                textInputEditText.setText("");
+            } else {
+                car_model_list_layout.setVisibility(View.GONE);
+                continueBtn.setVisibility(View.VISIBLE);
+                textInputEditText.setText(carInfo.getModel());
+            }
+        } else {
+            question_view.setText("What make is your car?");
+            if(carInfo.getMake() == null) {
+                popular_title_view.setText("Popular makes");
+                car_model_list_layout.setVisibility(View.VISIBLE);
+                continueBtn.setVisibility(View.GONE);
+                textInputEditText.setText("");
+            } else {
+                car_model_list_layout.setVisibility(View.GONE);
+                continueBtn.setVisibility(View.VISIBLE);
+                textInputEditText.setText(carInfo.getMake());
+            }
+        }
+
         popular_listview = view.findViewById(R.id.popular_listview);
         PopularListAdapter adapter = new PopularListAdapter(getContext(), 0, popular_makes);
         popular_listview.setAdapter(adapter);
+    }
+
+    private void setToolbar(){
+        ((AddCarActivity)getActivity()).setSupportActionBar(this.toolbar);
+        actionBar = ((AddCarActivity)getActivity()).getSupportActionBar();
+        actionBar.setTitle("Your car details");
+        toolbar.setTitleTextColor(getResources().getColor(android.R.color.white));
+        actionBar.setDisplayHomeAsUpEnabled(true);
+
     }
 
     class PopularListAdapter extends ArrayAdapter<String> {
@@ -89,7 +156,12 @@ public class CarDetailChooseModelFragment extends Fragment {
                 @Override
                 public void onClick(View v) {
                     if(flag.equals("model")){
+                        carInfo.setModel(item);
                         CarDetailChooseTypeFragment typeFragment = new CarDetailChooseTypeFragment();
+                        Bundle b = new Bundle();
+                        b.putSerializable("car_info", (Serializable)carInfo);
+                        b.putString("edit_flag", edit_flag);
+                        typeFragment.setArguments(b);
                         getActivity().getSupportFragmentManager().beginTransaction()
                                 .replace(R.id.add_car_detail_frame, typeFragment)
                                 .commit();
@@ -101,11 +173,79 @@ public class CarDetailChooseModelFragment extends Fragment {
                         PopularListAdapter adapter = new PopularListAdapter(mContext, 0, model);
                         popular_listview.setAdapter(adapter);
                         notifyDataSetChanged();
+                        carInfo.setMake(item);
                     }
                 }
             });
 
             return convertView;
         }
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.continue_btn:
+                if(flag.equals("model")){
+                    CarDetailChooseTypeFragment typeFragment = new CarDetailChooseTypeFragment();
+                    Bundle b = new Bundle();
+                    b.putSerializable("car_info", (Serializable)carInfo);
+                    b.putString("edit_flag", edit_flag);
+                    typeFragment.setArguments(b);
+                    getActivity().getSupportFragmentManager().beginTransaction()
+                            .replace(R.id.add_car_detail_frame, typeFragment)
+                            .commit();
+                } else {
+                    flag = "model";
+                    question_view.setText("What model?");
+                    popular_title_view.setText("Popular models");
+//                    if(carInfo.getModel() == null){
+                    textInputEditText.setText(carInfo.getModel());
+                    if(carInfo.getModel() == null){
+                        car_model_list_layout.setVisibility(View.VISIBLE);
+                        continueBtn.setVisibility(View.GONE);
+                    } else {
+                        car_model_list_layout.setVisibility(View.GONE);
+                        continueBtn.setVisibility(View.VISIBLE);
+                    }
+//                    } else {
+//                        car_model_list_layout.setVisibility(View.VISIBLE);
+//                        continueBtn.setVisibility(View.GONE);
+//                        textInputEditText.setText("");
+//                        List<String> model = models.get(position);
+//                        PopularListAdapter adapter = new PopularListAdapter(mContext, 0, model);
+//                        popular_listview.setAdapter(adapter);
+//                        carInfo.setMake(item);
+//                    }
+                }
+                break;
+            case R.id.input_layout:
+                break;
+        }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId() == android.R.id.home){
+            if(flag.equals("model")){
+                flag = "make";
+                question_view.setText("What make is your car?");
+                popular_title_view.setText("Popular makes");
+                car_model_list_layout.setVisibility(View.GONE);
+                continueBtn.setVisibility(View.VISIBLE);
+                textInputEditText.setText(carInfo.getMake());
+            } else {
+                CarDetailPhoneNumberFragment phoneNumberFragment = new CarDetailPhoneNumberFragment();
+                Bundle b = new Bundle();
+                b.putSerializable("car_info", (Serializable)carInfo);
+                b.putString("edit_flag", edit_flag);
+                phoneNumberFragment.setArguments(b);
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.add_car_detail_frame, phoneNumberFragment)
+                        .commit();
+            }
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
