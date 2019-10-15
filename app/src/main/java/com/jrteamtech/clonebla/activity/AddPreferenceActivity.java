@@ -232,12 +232,16 @@ public class AddPreferenceActivity extends AppCompatActivity implements View.OnC
             case R.id.save_preferences:
                 editor.putInt("chat_index", chat_index);
                 editor.putInt("chat_resource", chat_resource);
+                editor.putString("chat_text", chattinesitem[chat_index]);
                 editor.putInt("smoking_index", smoking_index);
                 editor.putInt("smoking_resource", smoking_resource);
+                editor.putString("smoking_text", smokingitem[smoking_index]);
                 editor.putInt("music_index", music_index);
                 editor.putInt("music_resource", music_resource);
+                editor.putString("music_text", musicitem[music_index]);
                 editor.putInt("pet_index", pet_index);
                 editor.putInt("pet_resource", pet_resource);
+                editor.putString("pet_text", petsitem[pet_index]);
                 editor.putBoolean("isExistCarPreferences", true);
                 editor.apply();
                 finish();

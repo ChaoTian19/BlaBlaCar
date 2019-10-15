@@ -152,18 +152,6 @@ public class CarDetailChooseTypeFragment extends Fragment implements View.OnClic
                 }
             });
 
-            car_type_check_btn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                @Override
-                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                    if(isChecked){
-                        CarDetailChooseColorFragment colorFragment = new CarDetailChooseColorFragment();
-                        getActivity().getSupportFragmentManager().beginTransaction()
-                                .replace(R.id.add_car_detail_frame, colorFragment)
-                                .commit();
-                    }
-                }
-            });
-
             return convertView;
         }
     }
