@@ -124,7 +124,7 @@ public class CarDetailChooseTypeFragment extends Fragment implements View.OnClic
                         carInfo.setImage(type.image_resource);
                         CarDetailChooseColorFragment colorFragment = new CarDetailChooseColorFragment();
                         Bundle b = new Bundle();
-                        b.putSerializable("car_info", (Serializable)carInfo);
+                        b.putSerializable("car_info", carInfo);
                         b.putString("edit_flag", edit_flag);
                         colorFragment.setArguments(b);
                         getActivity().getSupportFragmentManager().beginTransaction()
@@ -142,21 +142,9 @@ public class CarDetailChooseTypeFragment extends Fragment implements View.OnClic
                         carInfo.setImage(type.image_resource);
                         CarDetailChooseColorFragment colorFragment = new CarDetailChooseColorFragment();
                         Bundle b = new Bundle();
-                        b.putSerializable("car_info", (Serializable)carInfo);
+                        b.putSerializable("car_info", carInfo);
                         b.putString("edit_flag", edit_flag);
                         colorFragment.setArguments(b);
-                        getActivity().getSupportFragmentManager().beginTransaction()
-                                .replace(R.id.add_car_detail_frame, colorFragment)
-                                .commit();
-                    }
-                }
-            });
-
-            car_type_check_btn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                @Override
-                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                    if(isChecked){
-                        CarDetailChooseColorFragment colorFragment = new CarDetailChooseColorFragment();
                         getActivity().getSupportFragmentManager().beginTransaction()
                                 .replace(R.id.add_car_detail_frame, colorFragment)
                                 .commit();
