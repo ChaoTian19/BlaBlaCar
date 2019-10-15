@@ -4,6 +4,10 @@
     <string name="sans_serif" translatable="false">sans-serif</string>
     <string name="Postaladdress">We just need a postal address so the postman can find you.</string>
 
+    <string name="twodistance">Centre Street, London -> Livepool John Lennon Airport (Stop 3), LiverPool</string>
+
+
+
 
     <string name="field_required">This field is required</string>
     <string name="email_required"> Please enter a valid email address. </string>

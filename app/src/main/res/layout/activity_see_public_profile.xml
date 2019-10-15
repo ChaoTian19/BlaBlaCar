@@ -47,22 +47,39 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="@dimen/dimen_42dp"
-      >
-    <ImageView
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:background="@drawable/chat_1"
-        android:layout_gravity="center"
-        android:layout_marginStart="10dp"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="I'm chatty when I fell like it"
-        android:layout_marginStart="10dp"/>
+        android:orientation="vertical">
+
+
+
     </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"
+        android:layout_marginTop="20dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp">
+
+        <ImageView
+            android:id="@+id/chat_img"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/chat_1"
+            android:layout_gravity="center"
+            android:layout_marginStart="10dp"/>
+        <TextView
+            android:id="@+id/chat_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="I'm chatty when I fell like it"
+            android:layout_marginStart="10dp"/>
+        </LinearLayout>
 
 
 
@@ -74,12 +91,14 @@
         android:layout_marginLeft="@dimen/dimen_8dp"
         >
         <ImageView
+            android:id="@+id/smoking_img"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:background="@drawable/seepublictick"
+            android:background="@drawable/smoking_1"
             android:layout_gravity="center"
             />
         <TextView
+            android:id="@+id/smoking_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -98,25 +117,55 @@
         android:layout_marginLeft="@dimen/dimen_8dp"
         >
         <ImageView
+            android:id="@+id/music_img"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:background="@drawable/seepublictick"
             android:layout_gravity="center"
             />
         <TextView
+            android:id="@+id/music_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginLeft="@dimen/dimen_12dp"
             android:text="I'm chatty when I fell like it"/>
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/dimen_42dp"
+        android:layout_marginLeft="@dimen/dimen_8dp"
+        >
+        <ImageView
+            android:id="@+id/pet_img"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/seepublictick"
+            android:layout_gravity="center"
+            />
+        <TextView
+            android:id="@+id/pet_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/dimen_12dp"
+            android:text="I'm chatty when I fell like it"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"
+        android:layout_marginTop="20dp"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Member since Jan 2018"
-        android:layout_marginLeft="@dimen/dimen_20dp"
-        android:layout_marginTop="@dimen/dimen_32dp"/>
+        android:layout_marginTop="20dp"/>
 
 
 
