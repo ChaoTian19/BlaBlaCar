@@ -213,7 +213,8 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:layout_marginRight="@dimen/dimen_36dp">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -257,13 +258,10 @@
                 </LinearLayout>
 
             </LinearLayout>
-
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-               
-
                 >
                 <ImageView
                     android:layout_width="wrap_content"
@@ -273,7 +271,10 @@
                     />
             </LinearLayout>
 
+
         </LinearLayout>
+
+
 
 
 
