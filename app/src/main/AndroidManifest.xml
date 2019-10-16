@@ -20,18 +20,46 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
-        <activity android:name=".activity.PublishSuccessActivity"></activity>
-        <activity android:name=".activity.AddPublishRideActivity" />
-        <activity android:name=".activity.EditPriceActivity" />
-        <activity android:name=".activity.GivingPriceActivity" />
-        <activity android:name=".activity.PublishReturnTripActivity" />
-        <activity android:name=".activity.PaymentActivity" />
-        <activity android:name=".activity.BookPassengerActivity" />
-        <activity android:name=".activity.ChoosePassengerActivity" />
-        <activity android:name=".activity.ThinkComfortActivity" />
-        <activity android:name=".activity.PlacesViewActivity" />
-        <activity android:name=".activity.AddStopOverActivity" />
-        <activity android:name=".activity.WelcomeActivity" />
+        <activity android:name=".activity.RideFilterActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.RidePriceDetailsActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.RideFinalBookActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.RideBookSeatActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.ReportRideActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.RideUserProfileActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.FullMapActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.RideDetailActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.PublishSuccessActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.AddPublishRideActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.EditPriceActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.GivingPriceActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.PublishReturnTripActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.PaymentActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.BookPassengerActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.ChoosePassengerActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.ThinkComfortActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.PlacesViewActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.AddStopOverActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.WelcomeActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".activity.MainActivity"
             android:screenOrientation="portrait"
@@ -43,7 +71,7 @@
             android:name=".activity.SearchActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activity.NoRideFindActivity"
+            android:name=".activity.RideFindActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.StopOversActivity"
@@ -87,51 +115,72 @@
         <activity
             android:name=".fragment.SearchFragment"
             android:screenOrientation="portrait" />
-        <activity android:name=".fragment.AccountFragment"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activity.VerifyMyIdActivity"
+        <activity
+            android:name=".fragment.AccountFragment"
             android:screenOrientation="portrait" />
-        <activity android:name=".activity.VerifyPhoneNumberActivity"
+        <activity
+            android:name=".activity.VerifyMyIdActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".activity.SeePublicProfileActivity"
+        <activity
+            android:name=".activity.VerifyPhoneNumberActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".activity.LincesActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activity.PrivatePolicyActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activity.TermsConditionsActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activity.HelpActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activity.PastTransfterActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activity.BankDetailsActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activity.PayPalAccountActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activity.WebViewActivity"
-            android:screenOrientation="portrait"
-            />
-        <activity android:name=".activity.BankAccountActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activity.PaymentHistoryActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activity.AwaitingTransferActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activity.RatingsLeftActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activity.ChangePasswordActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activity.PostalAddressActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activity.NotificationCommunicationActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activity.PushNotificationsActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activity.EmailPushnotificationActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activity.MessagingTitleActivity"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.SeePublicProfileActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.LincesActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.PrivatePolicyActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.TermsConditionsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.HelpActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.PastTransfterActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.BankDetailsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.PayPalAccountActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.WebViewActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.BankAccountActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.PaymentHistoryActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.AwaitingTransferActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.RatingsLeftActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.ChangePasswordActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.PostalAddressActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.NotificationCommunicationActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.PushNotificationsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.EmailPushnotificationActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.MessagingTitleActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.SplashActivity"
             android:screenOrientation="portrait"
@@ -145,9 +194,7 @@
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-
             android:value="@string/google_map_api_key" />
-
     </application>
 
 </manifest>

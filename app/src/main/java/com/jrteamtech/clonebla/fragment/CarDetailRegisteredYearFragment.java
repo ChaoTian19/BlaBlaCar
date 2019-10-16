@@ -17,7 +17,7 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.jrteamtech.clonebla.R;
 import com.jrteamtech.clonebla.activity.AddCarActivity;
 import com.jrteamtech.clonebla.database.DBHelper;
-import com.jrteamtech.clonebla.database.model.CarInfo;
+import com.jrteamtech.clonebla.model.CarInfoModel;
 
 import java.io.Serializable;
 
@@ -28,14 +28,14 @@ public class CarDetailRegisteredYearFragment extends Fragment implements View.On
     private TextView submitBtn;
     private TextInputEditText et_year;
 
-    CarInfo carInfo;
+    CarInfoModel carInfoModel;
     String edit_flag;
     DBHelper dbHelper;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        carInfo = (CarInfo) getArguments().getSerializable("car_info");
+        carInfoModel = (CarInfoModel) getArguments().getSerializable("car_info");
         edit_flag = getArguments().getString("edit_flag");
         dbHelper = new DBHelper(getContext());
         setHasOptionsMenu(true);
@@ -50,8 +50,8 @@ public class CarDetailRegisteredYearFragment extends Fragment implements View.On
         toolbar = view.findViewById(R.id.toolbar);
         setToolbar();
 
-        if(carInfo.getYear() != null){
-            et_year.setText(carInfo.getYear());
+        if(carInfoModel.getYear() != null){
+            et_year.setText(carInfoModel.getYear());
         }
 
         submitBtn.setOnClickListener(this);
@@ -71,11 +71,11 @@ public class CarDetailRegisteredYearFragment extends Fragment implements View.On
         switch (v.getId()){
             case R.id.submit_btn:
                 if (!et_year.getText().toString().trim().isEmpty()) {
-                    carInfo.setYear(et_year.getText().toString());
+                    carInfoModel.setYear(et_year.getText().toString());
                     if(edit_flag.equals("new")){
-                        dbHelper.insertCarInfo(carInfo);
+                        dbHelper.insertCarInfo(carInfoModel);
                     } else {
-                        dbHelper.updateCarInfo(carInfo);
+                        dbHelper.updateCarInfo(carInfoModel);
                     }
                     ((AddCarActivity)getContext()).finish();
                 }
@@ -88,7 +88,7 @@ public class CarDetailRegisteredYearFragment extends Fragment implements View.On
         if(item.getItemId() == android.R.id.home){
             CarDetailChooseColorFragment colorFragment = new CarDetailChooseColorFragment();
             Bundle b = new Bundle();
-            b.putSerializable("car_info", (Serializable)carInfo);
+            b.putSerializable("car_info", (Serializable) carInfoModel);
             b.putString("edit_flag", edit_flag);
             colorFragment.setArguments(b);
             getActivity().getSupportFragmentManager().beginTransaction()

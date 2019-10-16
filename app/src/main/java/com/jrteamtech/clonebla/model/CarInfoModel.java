@@ -1,8 +1,8 @@
-package com.jrteamtech.clonebla.database.model;
+package com.jrteamtech.clonebla.model;
 
 import java.io.Serializable;
 
-public class CarInfo implements Serializable {
+public class CarInfoModel implements Serializable {
 
     public static String TABLE_NAME = "`car_info`";
 

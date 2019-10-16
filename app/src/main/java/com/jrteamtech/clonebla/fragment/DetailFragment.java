@@ -32,7 +32,7 @@ import com.jrteamtech.clonebla.activity.VerifyMyIdActivity;
 import com.jrteamtech.clonebla.activity.VerifyPhoneNumberActivity;
 import com.jrteamtech.clonebla.adapter.CarInfoAdapter;
 import com.jrteamtech.clonebla.database.DBHelper;
-import com.jrteamtech.clonebla.database.model.CarInfo;
+import com.jrteamtech.clonebla.model.CarInfoModel;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -55,7 +55,7 @@ public class DetailFragment extends Fragment implements View.OnClickListener {
 
     private SharedPreferences sharedPreferences;
     private DBHelper dbHelper;
-    private List<CarInfo> carInfoList = new ArrayList<>();
+    private List<CarInfoModel> carInfoModelList = new ArrayList<>();
 
     private boolean isExistCarPreferences = false;
 
@@ -106,8 +106,8 @@ public class DetailFragment extends Fragment implements View.OnClickListener {
     }
 
     private void showCarInfoList() {
-        carInfoList = dbHelper.getAllCarInfos();
-        if(carInfoList.size() == 0){
+        carInfoModelList = dbHelper.getAllCarInfos();
+        if(carInfoModelList.size() == 0){
             this.tvAddCar.setVisibility(View.VISIBLE);
             this.btnAddCar.setVisibility(View.GONE);
             this.rvCarInfoRecyclerView.setVisibility(View.GONE);
@@ -115,12 +115,12 @@ public class DetailFragment extends Fragment implements View.OnClickListener {
             this.tvAddCar.setVisibility(View.GONE);
             this.btnAddCar.setVisibility(View.VISIBLE);
             this.rvCarInfoRecyclerView.setVisibility(View.VISIBLE);
-            this.carInfoAdapter = new CarInfoAdapter(getContext(), carInfoList);
+            this.carInfoAdapter = new CarInfoAdapter(getContext(), carInfoModelList);
             this.carInfoAdapter.setItemClickListener(new CarInfoAdapter.ItemClickListener() {
                 @Override
                 public void onItemClick(View view, int position) {
                     Intent intent = new Intent(getContext(), AddCarActivity.class);
-                    intent.putExtra("car_info", (Serializable)carInfoList.get(position));
+                    intent.putExtra("car_info", (Serializable) carInfoModelList.get(position));
                     intent.putExtra("edit_flag", "edit");
                     startActivity(intent);
                 }
@@ -133,7 +133,7 @@ public class DetailFragment extends Fragment implements View.OnClickListener {
                         startActivity(new Intent(getContext(), ChooseCarPhotoActivity.class));
                     } else if(type.equals(carInfoAdapter.EDIT)){
                         Intent intent = new Intent(getContext(), AddCarActivity.class);
-                        intent.putExtra("car_info", (Serializable)carInfoList.get(position));
+                        intent.putExtra("car_info", (Serializable) carInfoModelList.get(position));
                         intent.putExtra("edit_flag", "edit");
                         startActivity(intent);
                     } else {
@@ -149,10 +149,10 @@ public class DetailFragment extends Fragment implements View.OnClickListener {
                                 .setPositiveButton("CONFIRM", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        dbHelper.deleteCarInfo(carInfoList.get(position));
-                                        carInfoList.remove(position);
+                                        dbHelper.deleteCarInfo(carInfoModelList.get(position));
+                                        carInfoModelList.remove(position);
                                         carInfoAdapter.notifyItemChanged(position);
-                                        if(carInfoList.size() == 0){
+                                        if(carInfoModelList.size() == 0){
                                             tvAddCar.setVisibility(View.VISIBLE);
                                             btnAddCar.setVisibility(View.GONE);
                                             rvCarInfoRecyclerView.setVisibility(View.GONE);

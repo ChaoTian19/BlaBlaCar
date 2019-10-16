@@ -110,22 +110,23 @@
         android:layout_height="@dimen/view_heght_1dp"
         android:layout_marginTop="@dimen/dimen_12dp" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_addresslist"
+    <ListView
+        android:id="@+id/ride_history_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="gone"/>
     <Button
+        android:id="@+id/btnSearch"
         android:textSize="@dimen/text_size_14sp"
         android:textStyle="bold"
         android:textColor="@color/white"
         android:layout_gravity="center"
-        android:id="@+id/tv_search"
         android:background="@drawable/background_primary"
         android:padding="@dimen/dimen_16dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dimen_16dp"
         android:text="@string/action_search"
-        android:textAllCaps="true" />
+        android:textAllCaps="true"
+        />
 </LinearLayout>

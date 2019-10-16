@@ -12,7 +12,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.jrteamtech.clonebla.R;
-import com.jrteamtech.clonebla.database.model.CarInfo;
+import com.jrteamtech.clonebla.model.CarInfoModel;
 
 import java.util.List;
 
@@ -23,16 +23,16 @@ public class CarInfoAdapter extends RecyclerView.Adapter<CarInfoAdapter.ViewHold
     public String DELETE = "delete";
 
     private Context mContext;
-    private List<CarInfo> carInfoList;
+    private List<CarInfoModel> carInfoModelList;
     private LayoutInflater mInflater;
     private ItemClickListener mItemClickListener;
     private ItemMenuClickListener mMenuClickListener;
 
     // data is passed into the constructor
-    public CarInfoAdapter(Context context, List<CarInfo> carInfoList) {
+    public CarInfoAdapter(Context context, List<CarInfoModel> carInfoModelList) {
         this.mContext = context;
         this.mInflater = LayoutInflater.from(context);
-        this.carInfoList = carInfoList;
+        this.carInfoModelList = carInfoModelList;
     }
 
     // inflates the row layout from xml when needed
@@ -45,17 +45,17 @@ public class CarInfoAdapter extends RecyclerView.Adapter<CarInfoAdapter.ViewHold
     // binds the data to the TextView in each row
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        CarInfo carInfo = carInfoList.get(position);
-        holder.carInfoTypeImgView.setImageResource(carInfo.getImage());
-        holder.carInfoMakeView.setText(carInfo.getMake());
-        holder.carInfoModelView.setText(carInfo.getModel());
-        holder.carInfoColorView.setText(carInfo.getColor_label());
+        CarInfoModel carInfoModel = carInfoModelList.get(position);
+        holder.carInfoTypeImgView.setImageResource(carInfoModel.getImage());
+        holder.carInfoMakeView.setText(carInfoModel.getMake());
+        holder.carInfoModelView.setText(carInfoModel.getModel());
+        holder.carInfoColorView.setText(carInfoModel.getColor_label());
     }
 
     // total number of rows
     @Override
     public int getItemCount() {
-        return carInfoList.size();
+        return carInfoModelList.size();
     }
 
 

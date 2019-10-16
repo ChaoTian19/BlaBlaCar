@@ -7,8 +7,6 @@
     <string name="twodistance">Centre Street, London -> Livepool John Lennon Airport (Stop 3), LiverPool</string>
 
 
-
-
     <string name="field_required">This field is required</string>
     <string name="email_required"> Please enter a valid email address. </string>
     <string name="password_required">  Choose a password of min. 8 characters. </string>

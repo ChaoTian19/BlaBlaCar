@@ -21,7 +21,7 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.jrteamtech.clonebla.R;
 import com.jrteamtech.clonebla.activity.AddCarActivity;
-import com.jrteamtech.clonebla.database.model.CarInfo;
+import com.jrteamtech.clonebla.model.CarInfoModel;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -49,13 +49,13 @@ public class CarDetailChooseModelFragment extends Fragment implements View.OnCli
 
     private String flag;
 
-    CarInfo carInfo;
+    CarInfoModel carInfoModel;
     String edit_flag;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        carInfo = (CarInfo) getArguments().getSerializable("car_info");
+        carInfoModel = (CarInfoModel) getArguments().getSerializable("car_info");
         edit_flag = getArguments().getString("edit_flag");
         flag = getArguments().getString("flag");
         setHasOptionsMenu(true);
@@ -92,7 +92,7 @@ public class CarDetailChooseModelFragment extends Fragment implements View.OnCli
 
         if(flag.equals("model")){
             question_view.setText("What model?");
-            if(carInfo.getModel() == null) {
+            if(carInfoModel.getModel() == null) {
                 popular_title_view.setText("Popular models");
                 car_model_list_layout.setVisibility(View.VISIBLE);
                 continueBtn.setVisibility(View.GONE);
@@ -100,11 +100,11 @@ public class CarDetailChooseModelFragment extends Fragment implements View.OnCli
             } else {
                 car_model_list_layout.setVisibility(View.GONE);
                 continueBtn.setVisibility(View.VISIBLE);
-                textInputEditText.setText(carInfo.getModel());
+                textInputEditText.setText(carInfoModel.getModel());
             }
         } else {
             question_view.setText("What make is your car?");
-            if(carInfo.getMake() == null) {
+            if(carInfoModel.getMake() == null) {
                 popular_title_view.setText("Popular makes");
                 car_model_list_layout.setVisibility(View.VISIBLE);
                 continueBtn.setVisibility(View.GONE);
@@ -112,7 +112,7 @@ public class CarDetailChooseModelFragment extends Fragment implements View.OnCli
             } else {
                 car_model_list_layout.setVisibility(View.GONE);
                 continueBtn.setVisibility(View.VISIBLE);
-                textInputEditText.setText(carInfo.getMake());
+                textInputEditText.setText(carInfoModel.getMake());
             }
         }
 
@@ -156,10 +156,10 @@ public class CarDetailChooseModelFragment extends Fragment implements View.OnCli
                 @Override
                 public void onClick(View v) {
                     if(flag.equals("model")){
-                        carInfo.setModel(item);
+                        carInfoModel.setModel(item);
                         CarDetailChooseTypeFragment typeFragment = new CarDetailChooseTypeFragment();
                         Bundle b = new Bundle();
-                        b.putSerializable("car_info", (Serializable)carInfo);
+                        b.putSerializable("car_info", (Serializable) carInfoModel);
                         b.putString("edit_flag", edit_flag);
                         typeFragment.setArguments(b);
                         getActivity().getSupportFragmentManager().beginTransaction()
@@ -173,7 +173,7 @@ public class CarDetailChooseModelFragment extends Fragment implements View.OnCli
                         PopularListAdapter adapter = new PopularListAdapter(mContext, 0, model);
                         popular_listview.setAdapter(adapter);
                         notifyDataSetChanged();
-                        carInfo.setMake(item);
+                        carInfoModel.setMake(item);
                     }
                 }
             });
@@ -189,7 +189,7 @@ public class CarDetailChooseModelFragment extends Fragment implements View.OnCli
                 if(flag.equals("model")){
                     CarDetailChooseTypeFragment typeFragment = new CarDetailChooseTypeFragment();
                     Bundle b = new Bundle();
-                    b.putSerializable("car_info", (Serializable)carInfo);
+                    b.putSerializable("car_info", (Serializable) carInfoModel);
                     b.putString("edit_flag", edit_flag);
                     typeFragment.setArguments(b);
                     getActivity().getSupportFragmentManager().beginTransaction()
@@ -199,9 +199,9 @@ public class CarDetailChooseModelFragment extends Fragment implements View.OnCli
                     flag = "model";
                     question_view.setText("What model?");
                     popular_title_view.setText("Popular models");
-//                    if(carInfo.getModel() == null){
-                    textInputEditText.setText(carInfo.getModel());
-                    if(carInfo.getModel() == null){
+//                    if(carInfoModel.getModel() == null){
+                    textInputEditText.setText(carInfoModel.getModel());
+                    if(carInfoModel.getModel() == null){
                         car_model_list_layout.setVisibility(View.VISIBLE);
                         continueBtn.setVisibility(View.GONE);
                     } else {
@@ -215,7 +215,7 @@ public class CarDetailChooseModelFragment extends Fragment implements View.OnCli
 //                        List<String> model = models.get(position);
 //                        PopularListAdapter adapter = new PopularListAdapter(mContext, 0, model);
 //                        popular_listview.setAdapter(adapter);
-//                        carInfo.setMake(item);
+//                        carInfoModel.setMake(item);
 //                    }
                 }
                 break;
@@ -233,11 +233,11 @@ public class CarDetailChooseModelFragment extends Fragment implements View.OnCli
                 popular_title_view.setText("Popular makes");
                 car_model_list_layout.setVisibility(View.GONE);
                 continueBtn.setVisibility(View.VISIBLE);
-                textInputEditText.setText(carInfo.getMake());
+                textInputEditText.setText(carInfoModel.getMake());
             } else {
                 CarDetailPhoneNumberFragment phoneNumberFragment = new CarDetailPhoneNumberFragment();
                 Bundle b = new Bundle();
-                b.putSerializable("car_info", (Serializable)carInfo);
+                b.putSerializable("car_info", (Serializable) carInfoModel);
                 b.putString("edit_flag", edit_flag);
                 phoneNumberFragment.setArguments(b);
                 getActivity().getSupportFragmentManager().beginTransaction()
