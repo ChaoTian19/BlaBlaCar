@@ -21,7 +21,7 @@ import androidx.fragment.app.Fragment;
 
 import com.jrteamtech.clonebla.R;
 import com.jrteamtech.clonebla.activity.AddCarActivity;
-import com.jrteamtech.clonebla.database.model.CarInfo;
+import com.jrteamtech.clonebla.model.CarInfoModel;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -38,13 +38,13 @@ public class CarDetailChooseTypeFragment extends Fragment implements View.OnClic
                     R.drawable.car_type_8};
     private String[] car_img_lables = {"Hatchback", "Saloon", "Convertible", "Estate", "SUV", "Station wagon", "Minivan", "Van"};
 
-    CarInfo carInfo;
+    CarInfoModel carInfoModel;
     String edit_flag;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        carInfo = (CarInfo) getArguments().getSerializable("car_info");
+        carInfoModel = (CarInfoModel) getArguments().getSerializable("car_info");
         edit_flag = getArguments().getString("edit_flag");
         setHasOptionsMenu(true);
         return inflater.inflate(R.layout.fragment_car_detail_choose_type, container, false);
@@ -60,7 +60,7 @@ public class CarDetailChooseTypeFragment extends Fragment implements View.OnClic
 
         continueBtn.setOnClickListener(this);
 
-        if(carInfo.getType() != null && !carInfo.getType().trim().isEmpty()){
+        if(carInfoModel.getType() != null && !carInfoModel.getType().trim().isEmpty()){
             continueBtn.setVisibility(View.VISIBLE);
         } else {
             continueBtn.setVisibility(View.GONE);
@@ -111,7 +111,7 @@ public class CarDetailChooseTypeFragment extends Fragment implements View.OnClic
             car_type_img.setImageResource(type.image_resource);
             car_type_label.setText(type.type);
 
-            if(carInfo.getType() != null && carInfo.getType().equals(type.type)){
+            if(carInfoModel.getType() != null && carInfoModel.getType().equals(type.type)){
                 car_type_check_btn.setChecked(true);
             }
 
@@ -120,11 +120,11 @@ public class CarDetailChooseTypeFragment extends Fragment implements View.OnClic
                 public void onClick(View v) {
                     if(!car_type_check_btn.isChecked()){
                         car_type_check_btn.setChecked(true);
-                        carInfo.setModel(type.type);
-                        carInfo.setImage(type.image_resource);
+                        carInfoModel.setModel(type.type);
+                        carInfoModel.setImage(type.image_resource);
                         CarDetailChooseColorFragment colorFragment = new CarDetailChooseColorFragment();
                         Bundle b = new Bundle();
-                        b.putSerializable("car_info", carInfo);
+                        b.putSerializable("car_info", carInfoModel);
                         b.putString("edit_flag", edit_flag);
                         colorFragment.setArguments(b);
                         getActivity().getSupportFragmentManager().beginTransaction()
@@ -138,11 +138,11 @@ public class CarDetailChooseTypeFragment extends Fragment implements View.OnClic
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                     if(isChecked) {
-                        carInfo.setType(type.type);
-                        carInfo.setImage(type.image_resource);
+                        carInfoModel.setType(type.type);
+                        carInfoModel.setImage(type.image_resource);
                         CarDetailChooseColorFragment colorFragment = new CarDetailChooseColorFragment();
                         Bundle b = new Bundle();
-                        b.putSerializable("car_info", carInfo);
+                        b.putSerializable("car_info", carInfoModel);
                         b.putString("edit_flag", edit_flag);
                         colorFragment.setArguments(b);
                         getActivity().getSupportFragmentManager().beginTransaction()
@@ -172,7 +172,7 @@ public class CarDetailChooseTypeFragment extends Fragment implements View.OnClic
             case R.id.continue_btn:
                 CarDetailChooseColorFragment colorFragment = new CarDetailChooseColorFragment();
                 Bundle b2 = new Bundle();
-                b2.putSerializable("car_info", (Serializable)carInfo);
+                b2.putSerializable("car_info", (Serializable) carInfoModel);
                 b2.putString("edit_flag", edit_flag);
                 colorFragment.setArguments(b2);
                 getActivity().getSupportFragmentManager().beginTransaction()
@@ -187,7 +187,7 @@ public class CarDetailChooseTypeFragment extends Fragment implements View.OnClic
         if(item.getItemId() == android.R.id.home){
             CarDetailChooseModelFragment chooseModelFragment = new CarDetailChooseModelFragment();
             Bundle b1 = new Bundle();
-            b1.putSerializable("car_info", (Serializable)carInfo);
+            b1.putSerializable("car_info", (Serializable) carInfoModel);
             b1.putString("flag", "model");
             b1.putString("edit_flag", edit_flag);
             chooseModelFragment.setArguments(b1);

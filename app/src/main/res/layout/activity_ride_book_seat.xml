@@ -33,8 +33,8 @@
 
         <TextView
             android:id="@+id/minus_counter_btn"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:background="@drawable/counter_button_bg"
             android:clickable="true"
             android:focusable="true"
@@ -59,10 +59,10 @@
 
         <TextView
             android:id="@+id/plus_counter_btn"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:text="+"
-            android:textSize="20dp"
+            android:textSize="30dp"
             android:textColor="@android:color/holo_blue_light"
             android:textStyle="bold"
             android:gravity="center"

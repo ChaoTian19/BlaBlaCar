@@ -22,7 +22,7 @@ import androidx.fragment.app.Fragment;
 
 import com.jrteamtech.clonebla.R;
 import com.jrteamtech.clonebla.activity.AddCarActivity;
-import com.jrteamtech.clonebla.database.model.CarInfo;
+import com.jrteamtech.clonebla.model.CarInfoModel;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -59,13 +59,13 @@ public class CarDetailChooseColorFragment extends Fragment implements View.OnCli
 
     private List<CarColor> colorList = new ArrayList<>();
 
-    CarInfo carInfo;
+    CarInfoModel carInfoModel;
     String edit_flag;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        carInfo = (CarInfo) getArguments().getSerializable("car_info");
+        carInfoModel = (CarInfoModel) getArguments().getSerializable("car_info");
         edit_flag = getArguments().getString("edit_flag");
         setHasOptionsMenu(true);
         return inflater.inflate(R.layout.fragment_car_detail_choose_color, container, false);
@@ -80,7 +80,7 @@ public class CarDetailChooseColorFragment extends Fragment implements View.OnCli
         toolbar = view.findViewById(R.id.toolbar);
         setToolbar();
 
-        if(carInfo.getColor_label() != null && !carInfo.getColor_label().trim().isEmpty()){
+        if(carInfoModel.getColor_label() != null && !carInfoModel.getColor_label().trim().isEmpty()){
             continueBtn.setVisibility(View.VISIBLE);
         }
 
@@ -134,7 +134,7 @@ public class CarDetailChooseColorFragment extends Fragment implements View.OnCli
 
             car_color_label.setText(color.color_label);
 
-            if(carInfo.getColor_label() != null && carInfo.getColor_label().equals(color.color_label)){
+            if(carInfoModel.getColor_label() != null && carInfoModel.getColor_label().equals(color.color_label)){
                 car_color_check_btn.setChecked(true);
             }
 
@@ -143,11 +143,11 @@ public class CarDetailChooseColorFragment extends Fragment implements View.OnCli
                 public void onClick(View v) {
                     if(!car_color_check_btn.isChecked()){
                         car_color_check_btn.setChecked(true);
-                        carInfo.setColor_label(color.color_label);
-                        carInfo.setColor_value(color.color_resource);
+                        carInfoModel.setColor_label(color.color_label);
+                        carInfoModel.setColor_value(color.color_resource);
                         CarDetailRegisteredYearFragment registeredYearFragment = new CarDetailRegisteredYearFragment();
                         Bundle b = new Bundle();
-                        b.putSerializable("car_info", (Serializable)carInfo);
+                        b.putSerializable("car_info", (Serializable) carInfoModel);
                         b.putString("edit_flag", edit_flag);
                         registeredYearFragment.setArguments(b);
                         getActivity().getSupportFragmentManager().beginTransaction()
@@ -161,11 +161,11 @@ public class CarDetailChooseColorFragment extends Fragment implements View.OnCli
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                     if(isChecked){
-                        carInfo.setColor_label(color.color_label);
-                        carInfo.setColor_value(color.color_resource);
+                        carInfoModel.setColor_label(color.color_label);
+                        carInfoModel.setColor_value(color.color_resource);
                         CarDetailRegisteredYearFragment registeredYearFragment = new CarDetailRegisteredYearFragment();
                         Bundle b = new Bundle();
-                        b.putSerializable("car_info", (Serializable)carInfo);
+                        b.putSerializable("car_info", (Serializable) carInfoModel);
                         b.putString("edit_flag", edit_flag);
                         registeredYearFragment.setArguments(b);
                         getActivity().getSupportFragmentManager().beginTransaction()
@@ -195,7 +195,7 @@ public class CarDetailChooseColorFragment extends Fragment implements View.OnCli
             case R.id.continue_btn:
                 CarDetailRegisteredYearFragment registeredYearFragment = new CarDetailRegisteredYearFragment();
                 Bundle bundle = new Bundle();
-                bundle.putSerializable("car_info", (Serializable)carInfo);
+                bundle.putSerializable("car_info", (Serializable) carInfoModel);
                 bundle.putString("edit_flag", edit_flag);
                 registeredYearFragment.setArguments(bundle);
                 getActivity().getSupportFragmentManager().beginTransaction()
@@ -210,7 +210,7 @@ public class CarDetailChooseColorFragment extends Fragment implements View.OnCli
         if(item.getItemId() == android.R.id.home){
             CarDetailChooseTypeFragment chooseTypeFragment = new CarDetailChooseTypeFragment();
             Bundle b = new Bundle();
-            b.putSerializable("car_info", (Serializable)carInfo);
+            b.putSerializable("car_info", (Serializable) carInfoModel);
             b.putString("edit_flag", edit_flag);
             chooseTypeFragment.setArguments(b);
             getActivity().getSupportFragmentManager().beginTransaction()

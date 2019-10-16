@@ -6,7 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.jrteamtech.clonebla.database.model.CarInfo;
+import com.jrteamtech.clonebla.model.CarInfoModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,36 +29,36 @@ public class DBHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
 
         // create notes table
-        db.execSQL(CarInfo.CREATE_TABLE_QUERY);
+        db.execSQL(CarInfoModel.CREATE_TABLE_QUERY);
     }
 
     // Upgrading database
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         // Drop older table if existed
-        db.execSQL("DROP TABLE IF EXISTS " + CarInfo.TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + CarInfoModel.TABLE_NAME);
 
         // Create tables again
         onCreate(db);
     }
 
-    public long insertCarInfo(CarInfo carInfo) {
+    public long insertCarInfo(CarInfoModel carInfoModel) {
         // get writable database as we want to write data
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
         // `id` and `timestamp` will be inserted automatically.
         // no need to add them
-        values.put(CarInfo.COLUMN_IMAGE, carInfo.getImage());
-        values.put(CarInfo.COLUMN_MAKE, carInfo.getMake());
-        values.put(CarInfo.COLUMN_MODEL, carInfo.getModel());
-        values.put(CarInfo.COLUMN_TYPE, carInfo.getType());
-        values.put(CarInfo.COLUMN_COLOR_LABEL, carInfo.getColor_label());
-        values.put(CarInfo.COLUMN_COLOR_VALUE, carInfo.getColor_value());
-        values.put(CarInfo.COLUMN_YEAR, carInfo.getYear());
+        values.put(CarInfoModel.COLUMN_IMAGE, carInfoModel.getImage());
+        values.put(CarInfoModel.COLUMN_MAKE, carInfoModel.getMake());
+        values.put(CarInfoModel.COLUMN_MODEL, carInfoModel.getModel());
+        values.put(CarInfoModel.COLUMN_TYPE, carInfoModel.getType());
+        values.put(CarInfoModel.COLUMN_COLOR_LABEL, carInfoModel.getColor_label());
+        values.put(CarInfoModel.COLUMN_COLOR_VALUE, carInfoModel.getColor_value());
+        values.put(CarInfoModel.COLUMN_YEAR, carInfoModel.getYear());
 
         // insert row
-        long id = db.insert(CarInfo.TABLE_NAME, null, values);
+        long id = db.insert(CarInfoModel.TABLE_NAME, null, values);
 
         // close db connection
         db.close();
@@ -91,11 +91,11 @@ public class DBHelper extends SQLiteOpenHelper {
 //        return note;
 //    }
 
-    public List<CarInfo> getAllCarInfos() {
-        List<CarInfo> carInfos = new ArrayList<>();
+    public List<CarInfoModel> getAllCarInfos() {
+        List<CarInfoModel> carInfoModels = new ArrayList<>();
 
         // Select All Query
-        String selectQuery = "SELECT  * FROM " + CarInfo.TABLE_NAME;
+        String selectQuery = "SELECT  * FROM " + CarInfoModel.TABLE_NAME;
 
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
@@ -103,17 +103,17 @@ public class DBHelper extends SQLiteOpenHelper {
         // looping through all rows and adding to list
         if (cursor.moveToFirst()) {
             do {
-                CarInfo info = new CarInfo();
-                info.setId(cursor.getInt(cursor.getColumnIndex(CarInfo.COLUMN_ID)));
-                info.setImage(cursor.getInt(cursor.getColumnIndex(CarInfo.COLUMN_IMAGE)));
-                info.setMake(cursor.getString(cursor.getColumnIndex(CarInfo.COLUMN_MAKE)));
-                info.setModel(cursor.getString(cursor.getColumnIndex(CarInfo.COLUMN_MODEL)));
-                info.setType(cursor.getString(cursor.getColumnIndex(CarInfo.COLUMN_TYPE)));
-                info.setColor_label(cursor.getString(cursor.getColumnIndex(CarInfo.COLUMN_COLOR_LABEL)));
-                info.setColor_value(cursor.getInt(cursor.getColumnIndex(CarInfo.COLUMN_COLOR_VALUE)));
-                info.setYear(cursor.getString(cursor.getColumnIndex(CarInfo.COLUMN_YEAR)));
+                CarInfoModel info = new CarInfoModel();
+                info.setId(cursor.getInt(cursor.getColumnIndex(CarInfoModel.COLUMN_ID)));
+                info.setImage(cursor.getInt(cursor.getColumnIndex(CarInfoModel.COLUMN_IMAGE)));
+                info.setMake(cursor.getString(cursor.getColumnIndex(CarInfoModel.COLUMN_MAKE)));
+                info.setModel(cursor.getString(cursor.getColumnIndex(CarInfoModel.COLUMN_MODEL)));
+                info.setType(cursor.getString(cursor.getColumnIndex(CarInfoModel.COLUMN_TYPE)));
+                info.setColor_label(cursor.getString(cursor.getColumnIndex(CarInfoModel.COLUMN_COLOR_LABEL)));
+                info.setColor_value(cursor.getInt(cursor.getColumnIndex(CarInfoModel.COLUMN_COLOR_VALUE)));
+                info.setYear(cursor.getString(cursor.getColumnIndex(CarInfoModel.COLUMN_YEAR)));
 
-                carInfos.add(info);
+                carInfoModels.add(info);
             } while (cursor.moveToNext());
         }
 
@@ -121,11 +121,11 @@ public class DBHelper extends SQLiteOpenHelper {
         db.close();
 
         // return notes list
-        return carInfos;
+        return carInfoModels;
     }
 
     public int getCarInfoCount() {
-        String countQuery = "SELECT  * FROM " + CarInfo.TABLE_NAME;
+        String countQuery = "SELECT  * FROM " + CarInfoModel.TABLE_NAME;
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(countQuery, null);
 
@@ -136,27 +136,27 @@ public class DBHelper extends SQLiteOpenHelper {
         return count;
     }
 
-    public int updateCarInfo(CarInfo carInfo) {
+    public int updateCarInfo(CarInfoModel carInfoModel) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        values.put(CarInfo.COLUMN_IMAGE, carInfo.getImage());
-        values.put(CarInfo.COLUMN_MAKE, carInfo.getMake());
-        values.put(CarInfo.COLUMN_MODEL, carInfo.getModel());
-        values.put(CarInfo.COLUMN_TYPE, carInfo.getType());
-        values.put(CarInfo.COLUMN_COLOR_LABEL, carInfo.getColor_label());
-        values.put(CarInfo.COLUMN_COLOR_VALUE, carInfo.getColor_value());
-        values.put(CarInfo.COLUMN_YEAR, carInfo.getYear());
+        values.put(CarInfoModel.COLUMN_IMAGE, carInfoModel.getImage());
+        values.put(CarInfoModel.COLUMN_MAKE, carInfoModel.getMake());
+        values.put(CarInfoModel.COLUMN_MODEL, carInfoModel.getModel());
+        values.put(CarInfoModel.COLUMN_TYPE, carInfoModel.getType());
+        values.put(CarInfoModel.COLUMN_COLOR_LABEL, carInfoModel.getColor_label());
+        values.put(CarInfoModel.COLUMN_COLOR_VALUE, carInfoModel.getColor_value());
+        values.put(CarInfoModel.COLUMN_YEAR, carInfoModel.getYear());
 
         // updating row
-        return db.update(CarInfo.TABLE_NAME, values, CarInfo.COLUMN_ID + " = ?",
-                new String[]{String.valueOf(carInfo.getId())});
+        return db.update(CarInfoModel.TABLE_NAME, values, CarInfoModel.COLUMN_ID + " = ?",
+                new String[]{String.valueOf(carInfoModel.getId())});
     }
 
-    public void deleteCarInfo(CarInfo carInfo) {
+    public void deleteCarInfo(CarInfoModel carInfoModel) {
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(CarInfo.TABLE_NAME, CarInfo.COLUMN_ID + " = ?",
-                new String[]{String.valueOf(carInfo.getId())});
+        db.delete(CarInfoModel.TABLE_NAME, CarInfoModel.COLUMN_ID + " = ?",
+                new String[]{String.valueOf(carInfoModel.getId())});
         db.close();
     }
 }

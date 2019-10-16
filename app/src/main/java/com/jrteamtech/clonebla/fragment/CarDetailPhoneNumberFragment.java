@@ -19,7 +19,7 @@ import androidx.fragment.app.Fragment;
 
 import com.jrteamtech.clonebla.R;
 import com.jrteamtech.clonebla.activity.AddCarActivity;
-import com.jrteamtech.clonebla.database.model.CarInfo;
+import com.jrteamtech.clonebla.model.CarInfoModel;
 
 public class CarDetailPhoneNumberFragment extends Fragment {
 
@@ -32,14 +32,14 @@ public class CarDetailPhoneNumberFragment extends Fragment {
     private String[] countries = {};
 
     ArrayAdapter adaptercountryname;
-    CarInfo carInfo;
+    CarInfoModel carInfoModel;
     String edit_flag;
     ActionBar actionBar;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        carInfo = (CarInfo) getArguments().getSerializable("car_info");
+        carInfoModel = (CarInfoModel) getArguments().getSerializable("car_info");
         edit_flag = getArguments().getString("edit_flag");
         setHasOptionsMenu(true);
         return inflater.inflate(R.layout.fragment_car_detail_phone_number, container, false);
@@ -65,7 +65,7 @@ public class CarDetailPhoneNumberFragment extends Fragment {
             public void onClick(View v) {
                 CarDetailChooseModelFragment modelFragment = new CarDetailChooseModelFragment();
                 Bundle b = new Bundle();
-                b.putSerializable("car_info", carInfo);
+                b.putSerializable("car_info", carInfoModel);
                 b.putString("flag", "make");
                 b.putString("edit_flag", edit_flag);
                 modelFragment.setArguments(b);
