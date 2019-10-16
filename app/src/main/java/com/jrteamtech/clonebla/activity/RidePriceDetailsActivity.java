@@ -43,9 +43,9 @@ public class RidePriceDetailsActivity extends AppCompatActivity implements View.
         back_arrow_btn.setOnClickListener(this);
 
         try {
-            int seat_count = Integer.parseInt(rideInfoObject.getString("seat"));
-            int total_price = Integer.parseInt(rideInfoObject.getString("price"));
-            int calculated_price = total_price - 4;
+            long seat_count = Long.parseLong(rideInfoObject.getString("seat"));
+            long total_price = Long.parseLong(rideInfoObject.getString("price"));
+            long calculated_price = total_price - 4;
 
             seat_count_view.setText(String.valueOf(seat_count));
             operation_price_view.setText(rideInfoObject.getString("currency") + calculated_price);
